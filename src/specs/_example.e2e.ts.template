@@ -1,0 +1,26 @@
+/**
+ * EXAMPLE spec — a starting template.
+ *
+ * Copy this file to a real spec, e.g. `src/specs/auth/login.e2e.ts`, then
+ * rename it WITHOUT the `.template` suffix so WebdriverIO picks it up
+ * (the config glob is `src/specs/.../*.e2e.ts`).
+ *
+ * This file is NOT executed as-is.
+ */
+import { expect } from "@wdio/globals"
+import { loginPage } from "@pages"
+
+describe("Example feature @smoke", () => {
+  beforeEach(async () => {
+    await loginPage.open()
+  })
+
+  it("loads the login screen", async () => {
+    await expect(await loginPage.isLoaded()).toBe(true)
+  })
+
+  it("shows an error for invalid credentials", async () => {
+    await loginPage.submit()
+    await expect(await loginPage.hasErrorMessage()).toBe(true)
+  })
+})

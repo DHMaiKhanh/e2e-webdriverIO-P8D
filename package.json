@@ -1,0 +1,60 @@
+{
+  "name": "e2e-p8d",
+  "version": "1.0.0",
+  "description": "Enterprise-grade WebdriverIO E2E testing suite for P8D (TypeScript + Page Object Model)",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "test": "wdio run ./config/wdio.local.conf.ts",
+    "test:local": "cross-env TEST_ENV=local wdio run ./config/wdio.local.conf.ts",
+    "test:web": "cross-env TEST_ENV=web wdio run ./config/wdio.web.conf.ts",
+    "test:android": "cross-env TEST_ENV=android wdio run ./config/wdio.android.conf.ts",
+    "test:ci": "cross-env TEST_ENV=ci wdio run ./config/wdio.ci.conf.ts",
+    "test:smoke": "cross-env TEST_TAGS=@smoke npm run test:local",
+    "test:regression": "cross-env TEST_TAGS=@regression npm run test:local",
+    "report:allure": "allure generate ./reports/allure-results --clean -o ./reports/allure-report && allure open ./reports/allure-report",
+    "report:clean": "rimraf reports logs",
+    "lint": "eslint \"src/**/*.ts\" \"config/**/*.ts\"",
+    "lint:fix": "eslint \"src/**/*.ts\" \"config/**/*.ts\" --fix",
+    "format": "prettier --write \"**/*.{ts,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,json,md}\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@typescript-eslint/eslint-plugin": "^8.18.0",
+    "@typescript-eslint/parser": "^8.18.0",
+    "appium": "^2.16.0",
+    "appium-uiautomator2-driver": "^3.8.0",
+    "@wdio/allure-reporter": "^9.4.0",
+    "@wdio/cli": "^9.4.0",
+    "@wdio/local-runner": "^9.4.0",
+    "@wdio/mocha-framework": "^9.4.0",
+    "@wdio/spec-reporter": "^9.4.0",
+    "@wdio/types": "^9.4.0",
+    "allure-commandline": "^2.32.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.7",
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-wdio": "^9.4.0",
+    "expect-webdriverio": "^5.0.6",
+    "prettier": "^3.4.2",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "tsx": "^4.19.2",
+    "typescript": "~5.6.3",
+    "webdriverio": "^9.4.0"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.3.0",
+    "currency.js": "^2.0.4",
+    "date-fns": "^4.1.0",
+    "uuid": "^11.0.3",
+    "winston": "^3.17.0"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "admin": {
+    "email": "qa.admin@p8d.local",
+    "pin": "9999",
+    "role": "ADMIN",
+    "displayName": "QA Admin",
+    "permissions": ["*"]
+  },
+  "staff": {
+    "email": "qa.user@p8d.local",
+    "pin": "1234",
+    "role": "STAFF",
+    "displayName": "QA Staff",
+    "permissions": ["order.create", "order.read"]
+  }
+}
