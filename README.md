@@ -109,6 +109,52 @@ npm run test:android        # Android (Appium)
 
 ---
 
+## Android DOM E2E — run on the P8_Dual emulator (not the physical P8D)
+
+The app under test is a **Tauri webview** (`com.fastboy.volt_pos`). Driving its
+DOM (login, orders, …) needs Appium's chromedriver to attach to the WebView via
+CDP. That works on the **P8_Dual emulator** but **not** on the physical
+MDM-locked P8D device: there the ROM kills the WebView renderer, so
+`switchContext(WEBVIEW_*)` hangs (documented in the app repo's
+`docs/p8d-device-bring-up-playbook.md`, Phụ lục A). On the physical device only
+the native smoke test (`device-smoke.e2e.ts`) is meaningful.
+
+The installed debug APK loads its frontend from the Vite dev server at
+`http://127.0.0.1:1420` (not bundled), so the app also needs the dev server up
+and an `adb reverse` tunnel. Full working recipe:
+
+```bash
+# 0. one-time: emulator + debug APK already provisioned (AVD "P8_Dual",
+#    app-arm64-debug.apk installed). ANDROID_UDID=emulator-5554 in .env.
+
+# 1. Boot the emulator
+"$ANDROID_HOME/emulator/emulator" -avd P8_Dual -no-snapshot-load
+
+# 2. In the app repo (D:\Project\P8D\P8D): start the Android dev server.
+#    TAURI_DEV_HOST=127.0.0.1 forces IPv4 so adb reverse can reach it.
+TAURI_DEV_HOST=127.0.0.1 npm run dev:android
+
+# 3. Tunnel the dev-server ports into the emulator
+npm run android:reverse        # adb reverse tcp:1420 + tcp:1421
+
+# 4. Run the DOM specs (sets ANDROID_WEBVIEW_READY=1)
+npm run test:android:emu
+```
+
+`ANDROID_WEBVIEW_READY=1` un-skips the webview specs; without it they self-skip
+so the suite never hangs on a dead-renderer device. First DOM interaction is
+slow (~10–15 s) because a hard navigation re-mounts the whole SPA over the
+tunnel under ARM translation — the specs wait `EXTRA_LONG` for it.
+
+Specs:
+- [`src/specs/android/device-smoke.e2e.ts`](src/specs/android/device-smoke.e2e.ts)
+  — native only (install/launch/foreground/webview-alive/screenshot); runs on
+  **any** device or emulator, no dev server needed.
+- [`src/specs/android/staff-token-login.e2e.ts`](src/specs/android/staff-token-login.e2e.ts)
+  — real DOM login test; requires the emulator recipe above.
+
+---
+
 ## Multi-window (staff + customer display)
 
 P8D always runs two Tauri windows, `main` (staff) and `customer` (second

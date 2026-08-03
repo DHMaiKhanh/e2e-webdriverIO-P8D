@@ -32,9 +32,11 @@ export const SELECTORS = {
    * Neither has a `data-testid` — flag adding one (see volt-e2e-spec skill).
    */
   LOGIN_STAFF_TOKEN: {
-    INPUT: 'input[name="staffToken"]',
+    // Verified against the live Android form: the field has no name/testid and
+    // an auto-generated React id, so the placeholder is the only stable hook.
+    INPUT: 'input[placeholder="Enter Staff Token"]',
     SUBMIT_BTN: 'button[type="submit"]',
-    ERROR_ALERT: '[role="alert"], .destructive'
+    ERROR_ALERT: '[role="alert"], .destructive, .text-destructive'
   },
 
   /**
@@ -72,6 +74,20 @@ export const SELECTORS = {
   SETTINGS: {
     SAVE_BTN: testId("settings-save"),
     SAVED_TOAST: testId("settings-saved-toast")
+  },
+
+  /**
+   * The Tauri WebView's data-fetch error screen — "Couldn't load … / Please
+   * check your connection / Try again" (e.g. the Orders list when the backend
+   * bridge is down). No data-testid on it, so the retry control is matched by
+   * its visible label. Recovery logic lives in src/utils/ensure-network.ts.
+   */
+  NETWORK_ERROR: {
+    // Primary: the retry button. A broader `*=Try again` (any element) is used
+    // as a fallback in code in case the control isn't a <button>.
+    RETRY_BTN: "button*=Try again",
+    RETRY_TEXT: "*=Try again",
+    MESSAGE: "*=Please check your connection"
   },
 
   // ---------------- Common ----------------

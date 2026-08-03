@@ -13,6 +13,16 @@ const bool = (value: string | undefined, fallback: boolean): boolean => {
   return ["1", "true", "yes", "on"].includes(value.toLowerCase())
 }
 
+/** Parse a comma-separated list of ports ("1420,1421") into numbers. */
+const ports = (value: string | undefined, fallback: number[]): number[] => {
+  if (!value) return fallback
+  const parsed = value
+    .split(",")
+    .map((v) => Number(v.trim()))
+    .filter((n) => Number.isInteger(n) && n > 0)
+  return parsed.length ? parsed : fallback
+}
+
 /**
  * Strongly-typed environment object.
  *
@@ -47,7 +57,17 @@ export const ENV = {
     deviceName: process.env.ANDROID_DEVICE_NAME ?? "",
     udid: process.env.ANDROID_UDID ?? "",
     appiumHost: process.env.APPIUM_HOST ?? "127.0.0.1",
-    appiumPort: num(process.env.APPIUM_PORT, 4723)
+    appiumPort: num(process.env.APPIUM_PORT, 4723),
+    /**
+     * Device→host localhost bridges the P8D WebView needs for backend data.
+     * On the emulator the app does NOT reach the backend over the internet
+     * directly — it calls `localhost:<port>`, which only reaches the laptop's
+     * dev server + backend while these adb-reverse forwards are live (mirrors
+     * `npm run android:reverse`). If they drop, the app shows "Couldn't load …
+     * / Please check your connection" even though the laptop is online.
+     * Override with ANDROID_REVERSE_PORTS="1420,1421".
+     */
+    reversePorts: ports(process.env.ANDROID_REVERSE_PORTS, [1420, 1421])
   },
 
   // ---- API ----
@@ -57,7 +77,10 @@ export const ENV = {
   // ---- Test accounts ----
   testUser: {
     email: process.env.TEST_USER_EMAIL ?? "qa.user@p8d.local",
-    pin: process.env.TEST_USER_PIN ?? "1234"
+    pin: process.env.TEST_USER_PIN ?? "1234",
+    /** Real staff token for the fallback login form. Leave empty to skip the
+     *  happy-path login test (src/specs/android/staff-token-login.e2e.ts). */
+    staffToken: process.env.STAFF_TOKEN ?? ""
   },
   testAdmin: {
     email: process.env.TEST_ADMIN_EMAIL ?? "qa.admin@p8d.local",
