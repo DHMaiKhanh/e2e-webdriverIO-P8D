@@ -1,4 +1,10 @@
 /**
+ * ⛔ DISABLED — this login-setup spec is EXCLUDED from every run in
+ *    config/wdio.shared.conf.ts (`exclude`), so `npm run android:login` no longer
+ *    runs it. Login is no longer exercised via specs; the persisted session
+ *    (appium:noReset) + ensureLoggedIn() in the real app specs cover auth. Kept
+ *    for reference. To re-enable, remove this file's entry from the `exclude` array.
+ *
  * P8D Android — one-time login ("login once, stay logged in").
  *
  * Run this ONCE to establish an authenticated session on the emulator:

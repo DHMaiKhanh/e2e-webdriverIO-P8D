@@ -1,4 +1,10 @@
 /**
+ * ⛔ DISABLED — this login spec is EXCLUDED from every run in
+ *    config/wdio.shared.conf.ts (`exclude`). Login is no longer exercised as a
+ *    test case: runs go straight into the already-authenticated, session-persisted
+ *    app. Kept here for reference. To re-enable, remove this file's entry from the
+ *    `exclude` array in the shared config.
+ *
  * Covers the fallback text-token login form at /login-staff-token
  * (src/routes/login-staff-token/-components/staff-token-form.tsx).
  *

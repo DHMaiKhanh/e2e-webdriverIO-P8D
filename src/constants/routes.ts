@@ -16,7 +16,17 @@ export const ROUTES = {
   APP: {
     HOME: "/",
     SETTINGS: "/settings",
-    ORDER_CHECKOUT: (orderId: string): string => `/order/${orderId}/checkout`
+    /** Orders list (status-tab filtered) — docs/order-test-cases.md §2.1. */
+    ORDERS: "/orders",
+    /** Single order detail / ticket — docs/order-test-cases.md §2.2. */
+    ORDER_DETAIL: (orderId: string): string => `/order/${orderId}`,
+    ORDER_CHECKOUT: (orderId: string): string => `/order/${orderId}/checkout`,
+    /**
+     * New Sale — create-order wizard entry (Select Staff → Add service →
+     * Review). Route inferred from UI navigation (docs/order-test-cases.md §9);
+     * confirm against the app router before relying on browser.url() here.
+     */
+    NEW_SALE: "/sale/new"
   }
 } as const
 

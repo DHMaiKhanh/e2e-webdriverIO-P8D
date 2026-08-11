@@ -3,6 +3,16 @@
     "playwright": {
       "command": "npx",
       "args": ["-y", "@playwright/mcp@latest"]
+    },
+    "appium-mcp": {
+      "command": "npx",
+      "args": ["-y", "appium-mcp@latest"],
+      "env": {
+        "ANDROID_HOME": "C:/Android/Sdk",
+        "CAPABILITIES_CONFIG": "d:/Project/P8D/WebdriverIO_P8D/config/appium-mcp-capabilities.json",
+        "NO_UI": "true",
+        "APPIUM_MCP_ON_CLIENT_DISCONNECT": "skip"
+      }
     }
   }
 }

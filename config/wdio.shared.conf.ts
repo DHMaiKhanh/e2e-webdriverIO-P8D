@@ -15,16 +15,32 @@ const ROOT = path.resolve(__dirname, "..")
  */
 export const sharedConfig: Partial<Options.Testrunner> = {
   runner: "local",
-  autoCompileOpts: {
-    autoCompile: true,
-    tsNodeOpts: {
-      transpileOnly: true,
-      project: path.join(ROOT, "tsconfig.json")
-    }
-  },
+
+  // Resolve CLI `--spec` globs from the project root, not the config dir.
+  // WDIO defaults rootDir to the directory of the config file (config/), and it
+  // only rebases a wildcard-free `--spec` to CWD — a glob like
+  // `./src/specs/**/*.e2e.ts` is left relative to rootDir. Without this it would
+  // glob `config/src/...` and silently match nothing.
+  rootDir: ROOT,
+  // WebdriverIO v9 auto-detects TypeScript and transpiles config + specs via
+  // tsx/ts-node, driven by tsconfig.json — the old `autoCompileOpts` block was
+  // removed in v8, so there is nothing to configure here.
 
   specs: [path.join(ROOT, "src/specs/**/*.e2e.ts")],
-  exclude: [],
+  // ⛔ LOGIN SPECS DISABLED — every run uses the already-authenticated,
+  //    session-persisted app (appium:noReset), so login/token specs are no
+  //    longer used. Excluding them here (one central place, inherited by every
+  //    env config) means they are never LOADED — they neither run nor show up
+  //    as skipped rows on the dashboard. To re-enable, remove the relevant
+  //    entry below. Covers functional login tests + the login-once setup spec +
+  //    the switch-shop ops spec (see each file's DISABLED banner).
+  exclude: [
+    path.join(ROOT, "src/specs/android/staff-token-login.e2e.ts"),
+    path.join(ROOT, "src/specs/android/login-staff-token-form.e2e.ts"),
+    path.join(ROOT, "src/specs/android/login-once.e2e.ts"),
+    path.join(ROOT, "src/specs/android/switch-shop.e2e.ts"),
+    path.join(ROOT, "src/specs/auth/staff-token-login.e2e.ts")
+  ],
 
   maxInstances: ENV.parallelInstances,
   logLevel: ENV.logLevel,

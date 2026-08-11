@@ -1,0 +1,711 @@
+{
+  "generatedAt": 1786358528875,
+  "runLabel": "Kết quả lần chạy gần nhất",
+  "source": "../reports/allure-results",
+  "summary": {
+    "total": 41,
+    "passed": 39,
+    "failed": 0,
+    "broken": 0,
+    "skipped": 2,
+    "passRate": 100,
+    "durationMs": 109574
+  },
+  "features": [
+    {
+      "name": "Cash payment · by code (deep-link, no finalize)",
+      "area": "android/payment",
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "broken": 0,
+      "skipped": 0,
+      "passRate": 100,
+      "durationMs": 15646
+    },
+    {
+      "name": "Card payment · by code (deep-link, unavailable state)",
+      "area": "android/payment",
+      "total": 6,
+      "passed": 4,
+      "failed": 0,
+      "broken": 0,
+      "skipped": 2,
+      "passRate": 100,
+      "durationMs": 6371
+    },
+    {
+      "name": "Other payment · by code (deep-link, no finalize)",
+      "area": "android/payment",
+      "total": 6,
+      "passed": 6,
+      "failed": 0,
+      "broken": 0,
+      "skipped": 0,
+      "passRate": 100,
+      "durationMs": 12895
+    },
+    {
+      "name": "Add Tip · by code (deep-link, no commit)",
+      "area": "android/payment",
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "broken": 0,
+      "skipped": 0,
+      "passRate": 100,
+      "durationMs": 11788
+    },
+    {
+      "name": "Gift card · by code (deep-link, no finalize)",
+      "area": "android/payment",
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "broken": 0,
+      "skipped": 0,
+      "passRate": 100,
+      "durationMs": 7035
+    },
+    {
+      "name": "P8D Android device smoke",
+      "area": "android",
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "broken": 0,
+      "skipped": 0,
+      "passRate": 100,
+      "durationMs": 1061
+    },
+    {
+      "name": "RESCAN · Tip + Card behavior probe",
+      "area": "android",
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "broken": 0,
+      "skipped": 0,
+      "passRate": 100,
+      "durationMs": 11888
+    },
+    {
+      "name": "SPIKE · payment suite can run by code (webview DOM is queryable)",
+      "area": "android",
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "broken": 0,
+      "skipped": 0,
+      "passRate": 100,
+      "durationMs": 1290
+    },
+    {
+      "name": "_harvest payment selectors",
+      "area": "android",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "broken": 0,
+      "skipped": 0,
+      "passRate": 100,
+      "durationMs": 12885
+    },
+    {
+      "name": "Android app launch",
+      "area": "android",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "broken": 0,
+      "skipped": 0,
+      "passRate": 100,
+      "durationMs": 3018
+    },
+    {
+      "name": "Android open app (manual control demo)",
+      "area": "android",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "broken": 0,
+      "skipped": 0,
+      "passRate": 100,
+      "durationMs": 22981
+    },
+    {
+      "name": "Android page-source dump (selector map)",
+      "area": "android",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "broken": 0,
+      "skipped": 0,
+      "passRate": 100,
+      "durationMs": 2669
+    },
+    {
+      "name": "P8D Android — app",
+      "area": "android",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "broken": 0,
+      "skipped": 0,
+      "passRate": 100,
+      "durationMs": 47
+    }
+  ],
+  "tests": [
+    {
+      "id": null,
+      "title": "dumps facts for each tender route",
+      "name": "dumps facts for each tender route",
+      "tags": [],
+      "feature": "_harvest payment selectors",
+      "area": "android",
+      "status": "passed",
+      "durationMs": 12885,
+      "start": 1786358310602,
+      "error": null
+    },
+    {
+      "id": "TIP-05",
+      "title": "Custom Tip + keypad drives a custom amount",
+      "name": "TIP-05 @regression · Custom Tip + keypad drives a custom amount",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Add Tip · by code (deep-link, no commit)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 3737,
+      "start": 1786358512019,
+      "error": null
+    },
+    {
+      "id": "TIP-02",
+      "title": "default TIP AMOUNT is $0",
+      "name": "TIP-02 @regression · default TIP AMOUNT is $0",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Add Tip · by code (deep-link, no commit)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 1687,
+      "start": 1786358505580,
+      "error": null
+    },
+    {
+      "id": "TIP-01",
+      "title": "every preset chip + Custom Tip is present",
+      "name": "TIP-01 @smoke · every preset chip + Custom Tip is present",
+      "tags": [
+        "@smoke"
+      ],
+      "feature": "Add Tip · by code (deep-link, no commit)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 1613,
+      "start": 1786358503966,
+      "error": null
+    },
+    {
+      "id": "TIP-04",
+      "title": "keypad C clears a running tip back to $0",
+      "name": "TIP-04 @regression · keypad C clears a running tip back to $0",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Add Tip · by code (deep-link, no commit)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 2270,
+      "start": 1786358509749,
+      "error": null
+    },
+    {
+      "id": "TIP-03",
+      "title": "preset % scale linearly (20% ≈ 2 × 10%, both > 0)",
+      "name": "TIP-03 @smoke · preset % scale linearly (20% ≈ 2 × 10%, both > 0)",
+      "tags": [
+        "@smoke"
+      ],
+      "feature": "Add Tip · by code (deep-link, no commit)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 2481,
+      "start": 1786358507267,
+      "error": null
+    },
+    {
+      "id": null,
+      "title": "attaches to the app and reaches a webview context",
+      "name": "attaches to the app and reaches a webview context",
+      "tags": [],
+      "feature": "Android app launch",
+      "area": "android",
+      "status": "passed",
+      "durationMs": 3018,
+      "start": 1786358363429,
+      "error": null
+    },
+    {
+      "id": null,
+      "title": "launches the app and holds the session open",
+      "name": "launches the app and holds the session open",
+      "tags": [],
+      "feature": "Android open app (manual control demo)",
+      "area": "android",
+      "status": "passed",
+      "durationMs": 22981,
+      "start": 1786358391153,
+      "error": null
+    },
+    {
+      "id": null,
+      "title": "captures the current screen's DOM, native tree, and selector map",
+      "name": "captures the current screen's DOM, native tree, and selector map",
+      "tags": [],
+      "feature": "Android page-source dump (selector map)",
+      "area": "android",
+      "status": "passed",
+      "durationMs": 2669,
+      "start": 1786358381676,
+      "error": null
+    },
+    {
+      "id": "CARD-06",
+      "title": "📱 paired terminal makes Card available",
+      "name": "CARD-06 @regression · 📱 paired terminal makes Card available",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Card payment · by code (deep-link, unavailable state)",
+      "area": "android/payment",
+      "status": "skipped",
+      "durationMs": 0,
+      "start": 1786358428440,
+      "error": null
+    },
+    {
+      "id": "CARD-07",
+      "title": "📱 successful card payment settles the order",
+      "name": "CARD-07 @regression · 📱 successful card payment settles the order",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Card payment · by code (deep-link, unavailable state)",
+      "area": "android/payment",
+      "status": "skipped",
+      "durationMs": 1,
+      "start": 1786358428440,
+      "error": null
+    },
+    {
+      "id": "CARD-02",
+      "title": "deep-link lands on the Card payment screen",
+      "name": "CARD-02 @regression · deep-link lands on the Card payment screen",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Card payment · by code (deep-link, unavailable state)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 1282,
+      "start": 1786358422069,
+      "error": null
+    },
+    {
+      "id": "CARD-04",
+      "title": "leaving the Card screen navigates away from /payment/card",
+      "name": "CARD-04 @smoke · leaving the Card screen navigates away from /payment/card",
+      "tags": [
+        "@smoke"
+      ],
+      "feature": "Card payment · by code (deep-link, unavailable state)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 1740,
+      "start": 1786358426700,
+      "error": null
+    },
+    {
+      "id": "CARD-05",
+      "title": "no manual card-entry form (card is terminal-only)",
+      "name": "CARD-05 @regression · no manual card-entry form (card is terminal-only)",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Card payment · by code (deep-link, unavailable state)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 1797,
+      "start": 1786358424903,
+      "error": null
+    },
+    {
+      "id": "CARD-03",
+      "title": "shows the card charge interface (UI only — never charges)",
+      "name": "CARD-03 @smoke · shows the card charge interface (UI only — never charges)",
+      "tags": [
+        "@smoke"
+      ],
+      "feature": "Card payment · by code (deep-link, unavailable state)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 1551,
+      "start": 1786358423352,
+      "error": null
+    },
+    {
+      "id": "CASH-03",
+      "title": "defaults: $0 received, $0 change, Accept disabled",
+      "name": "CASH-03 @regression · defaults: $0 received, $0 change, Accept disabled",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Cash payment · by code (deep-link, no finalize)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 1665,
+      "start": 1786358440512,
+      "error": null
+    },
+    {
+      "id": "CASH-02",
+      "title": "dual pricing: Amount due equals Subtotal",
+      "name": "CASH-02 @smoke · dual pricing: Amount due equals Subtotal",
+      "tags": [
+        "@smoke"
+      ],
+      "feature": "Cash payment · by code (deep-link, no finalize)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 1711,
+      "start": 1786358438800,
+      "error": null
+    },
+    {
+      "id": "CASH-08",
+      "title": "insufficient cash keeps Accept disabled",
+      "name": "CASH-08 @regression · insufficient cash keeps Accept disabled",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Cash payment · by code (deep-link, no finalize)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 2053,
+      "start": 1786358451217,
+      "error": null
+    },
+    {
+      "id": "CASH-07",
+      "title": "keypad entry updates CASH RECEIVED",
+      "name": "CASH-07 @regression · keypad entry updates CASH RECEIVED",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Cash payment · by code (deep-link, no finalize)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 2617,
+      "start": 1786358448600,
+      "error": null
+    },
+    {
+      "id": "CASH-05",
+      "title": "Quick cash $100 → change = 100 − amount due",
+      "name": "CASH-05 @smoke · Quick cash $100 → change = 100 − amount due",
+      "tags": [
+        "@smoke"
+      ],
+      "feature": "Cash payment · by code (deep-link, no finalize)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 1740,
+      "start": 1786358444192,
+      "error": null
+    },
+    {
+      "id": "CASH-06",
+      "title": "Quick cash $120 / $150 → change = amount − due",
+      "name": "CASH-06 @regression · Quick cash $120 / $150 → change = amount − due",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Cash payment · by code (deep-link, no finalize)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 2668,
+      "start": 1786358445932,
+      "error": null
+    },
+    {
+      "id": "CASH-04",
+      "title": "Quick cash Exact → received = due, change $0, Accept enabled",
+      "name": "CASH-04 @regression · Quick cash Exact → received = due, change $0, Accept enabled",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Cash payment · by code (deep-link, no finalize)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 2014,
+      "start": 1786358442177,
+      "error": null
+    },
+    {
+      "id": "CASH-01",
+      "title": "shows every breakdown row",
+      "name": "CASH-01 @smoke · shows every breakdown row",
+      "tags": [
+        "@smoke"
+      ],
+      "feature": "Cash payment · by code (deep-link, no finalize)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 1178,
+      "start": 1786358437621,
+      "error": null
+    },
+    {
+      "id": "GC-06",
+      "title": "an invalid card code never resolves or enables Redeem",
+      "name": "GC-06 @regression · an invalid card code never resolves or enables Redeem",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Gift card · by code (deep-link, no finalize)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 3120,
+      "start": 1786358467404,
+      "error": null
+    },
+    {
+      "id": "GC-02",
+      "title": "breakdown rows present (Subtotal / Service fee / Cash discount)",
+      "name": "GC-02 @regression · breakdown rows present (Subtotal / Service fee / Cash discount)",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Gift card · by code (deep-link, no finalize)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 1194,
+      "start": 1786358465055,
+      "error": null
+    },
+    {
+      "id": "GC-01",
+      "title": "dual pricing: Amount due = base (fee cancelled like cash)",
+      "name": "GC-01 @smoke · dual pricing: Amount due = base (fee cancelled like cash)",
+      "tags": [
+        "@smoke"
+      ],
+      "feature": "Gift card · by code (deep-link, no finalize)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 1567,
+      "start": 1786358463488,
+      "error": null
+    },
+    {
+      "id": "GC-03",
+      "title": "Redeem is disabled until a card code is entered",
+      "name": "GC-03 @regression · Redeem is disabled until a card code is entered",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Gift card · by code (deep-link, no finalize)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 1154,
+      "start": 1786358466249,
+      "error": null
+    },
+    {
+      "id": "OTH-07",
+      "title": "backspace removes the last entered digit",
+      "name": "OTH-07 @regression · backspace removes the last entered digit",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Other payment · by code (deep-link, no finalize)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 3564,
+      "start": 1786358490204,
+      "error": null
+    },
+    {
+      "id": "OTH-04",
+      "title": "Clear → received $0, remaining = due, Record disabled",
+      "name": "OTH-04 @regression · Clear → received $0, remaining = due, Record disabled",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Other payment · by code (deep-link, no finalize)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 2249,
+      "start": 1786358485326,
+      "error": null
+    },
+    {
+      "id": "OTH-03",
+      "title": "defaults: received pre-filled to due, remaining $0, Record enabled",
+      "name": "OTH-03 @regression · defaults: received pre-filled to due, remaining $0, Record enabled",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Other payment · by code (deep-link, no finalize)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 1832,
+      "start": 1786358483494,
+      "error": null
+    },
+    {
+      "id": "OTH-01",
+      "title": "dual pricing: Amount due = Subtotal + Service fee (keeps fee)",
+      "name": "OTH-01 @smoke · dual pricing: Amount due = Subtotal + Service fee (keeps fee)",
+      "tags": [
+        "@smoke"
+      ],
+      "feature": "Other payment · by code (deep-link, no finalize)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 1327,
+      "start": 1786358480870,
+      "error": null
+    },
+    {
+      "id": "OTH-02",
+      "title": "has NO cash-discount row (unlike Cash)",
+      "name": "OTH-02 @regression · has NO cash-discount row (unlike Cash)",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Other payment · by code (deep-link, no finalize)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 1296,
+      "start": 1786358482198,
+      "error": null
+    },
+    {
+      "id": "OTH-05",
+      "title": "keypad after Clear updates amount received",
+      "name": "OTH-05 @regression · keypad after Clear updates amount received",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Other payment · by code (deep-link, no finalize)",
+      "area": "android/payment",
+      "status": "passed",
+      "durationMs": 2627,
+      "start": 1786358487576,
+      "error": null
+    },
+    {
+      "id": null,
+      "title": "is inside the authenticated app (not parked on a login screen)",
+      "name": "is inside the authenticated app (not parked on a login screen)",
+      "tags": [],
+      "feature": "P8D Android — app",
+      "area": "android",
+      "status": "passed",
+      "durationMs": 47,
+      "start": 1786358356199,
+      "error": null
+    },
+    {
+      "id": null,
+      "title": "captures a native screenshot artifact",
+      "name": "captures a native screenshot artifact",
+      "tags": [],
+      "feature": "P8D Android device smoke",
+      "area": "android",
+      "status": "passed",
+      "durationMs": 389,
+      "start": 1786358374408,
+      "error": null
+    },
+    {
+      "id": null,
+      "title": "has booted its Tauri webview process",
+      "name": "has booted its Tauri webview process",
+      "tags": [],
+      "feature": "P8D Android device smoke",
+      "area": "android",
+      "status": "passed",
+      "durationMs": 332,
+      "start": 1786358374076,
+      "error": null
+    },
+    {
+      "id": null,
+      "title": "has the app in the foreground on the correct activity",
+      "name": "has the app in the foreground on the correct activity",
+      "tags": [],
+      "feature": "P8D Android device smoke",
+      "area": "android",
+      "status": "passed",
+      "durationMs": 340,
+      "start": 1786358373735,
+      "error": null
+    },
+    {
+      "id": null,
+      "title": "probes the Card screen title + buttons",
+      "name": "probes the Card screen title + buttons",
+      "tags": [],
+      "feature": "RESCAN · Tip + Card behavior probe",
+      "area": "android",
+      "status": "passed",
+      "durationMs": 3230,
+      "start": 1786358343055,
+      "error": null
+    },
+    {
+      "id": null,
+      "title": "probes Tip interactions",
+      "name": "probes Tip interactions",
+      "tags": [],
+      "feature": "RESCAN · Tip + Card behavior probe",
+      "area": "android",
+      "status": "passed",
+      "durationMs": 8658,
+      "start": 1786358334397,
+      "error": null
+    },
+    {
+      "id": null,
+      "title": "1 · WDIO reads the P8D webview DOM (chromedriver path, not just CDP)",
+      "name": "1 · WDIO reads the P8D webview DOM (chromedriver path, not just CDP)",
+      "tags": [],
+      "feature": "SPIKE · payment suite can run by code (webview DOM is queryable)",
+      "area": "android",
+      "status": "passed",
+      "durationMs": 424,
+      "start": 1786358526266,
+      "error": null
+    },
+    {
+      "id": null,
+      "title": "2 · reads a REAL Cash-payment breakdown by code + asserts dual pricing",
+      "name": "2 · reads a REAL Cash-payment breakdown by code + asserts dual pricing",
+      "tags": [],
+      "feature": "SPIKE · payment suite can run by code (webview DOM is queryable)",
+      "area": "android",
+      "status": "passed",
+      "durationMs": 866,
+      "start": 1786358526691,
+      "error": null
+    }
+  ]
+}

@@ -26,10 +26,13 @@ import { TIMEOUTS } from "../../constants/timeouts.js"
 
 const APP_ID = "com.fastboy.volt_pos"
 
-// ⛔ LOGIN TEST CASES DISABLED — by project decision, every run goes STRAIGHT
-//    into the app on the already-authenticated session (appium:noReset keeps the
-//    session alive; see src/specs/android/app-home.e2e.ts + utils/ensure-logged-in.ts).
-//    These cases are kept for reference but never run. To re-enable, restore:
+// ⛔ LOGIN TEST CASES DISABLED — every run goes STRAIGHT into the app on the
+//    already-authenticated session (appium:noReset keeps it alive; see
+//    src/specs/android/app-home.e2e.ts + utils/ensure-logged-in.ts). This whole
+//    file is ALSO excluded from every run in config/wdio.shared.conf.ts
+//    (`exclude`), so it is never even loaded — no run, no skipped rows on the
+//    dashboard. The describe.skip below is a secondary safety net. To fully
+//    re-enable, remove this file from the shared `exclude` array AND restore:
 //      const suite = process.env.ANDROID_WEBVIEW_READY === "1" ? describe : describe.skip
 const suite = describe.skip
 

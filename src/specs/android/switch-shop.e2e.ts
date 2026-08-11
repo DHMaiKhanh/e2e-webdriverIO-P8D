@@ -1,4 +1,9 @@
 /**
+ * ⛔ DISABLED — this token/login-based ops spec is EXCLUDED from every run in
+ *    config/wdio.shared.conf.ts (`exclude`). Anything driving the login/token flow
+ *    is no longer used. Kept for reference. To re-enable, remove this file's entry
+ *    from the `exclude` array in the shared config.
+ *
  * P8D Android — switch shop by re-authenticating with a different Staff Token.
  *
  * One-off OPERATIONAL spec (not part of the normal suite) to move the emulator
