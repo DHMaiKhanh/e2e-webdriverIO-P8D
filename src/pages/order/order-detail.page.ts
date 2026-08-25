@@ -30,14 +30,25 @@ export type SendReceiptType = "email" | "text"
 
 export class OrderDetailPage extends BasePage {
   protected readonly pageName = "OrderDetailPage"
-  protected readonly rootSelector = SELECTORS.ORDER_DETAIL.PAYMENT_DETAILS
+  // The header #OD nav-bar is present on both the open-order ticket and the paid
+  // receipt — a reliable "an order screen is showing" anchor. (Payment details is
+  // only on the completed receipt, so it can't gate the generic detail load.)
+  protected readonly rootSelector = SELECTORS.ORDER_DETAIL.ORDER_ID
 
   async isOnScreen(): Promise<boolean> {
     return this.isLoaded()
   }
 
+  /** Parse the "$X.XX" amount out of a row's text ("Subtotal$124.00" → 12400).
+   * Rows concatenate their label + value with no separator and labels can carry
+   * digits, so read the LAST money token rather than toCents-ing the whole text. */
+  private async moneyOf(selector: string): Promise<number> {
+    const monies = (await this.$(selector).getText()).replace(/\s+/g, " ").match(/-?\$[\d,]+\.\d{2}/g) ?? []
+    return monies.length ? toCents(monies[monies.length - 1]) : 0
+  }
+
   async getTotalPaidCents(): Promise<number> {
-    return toCents(await this.$(SELECTORS.ORDER_DETAIL.TOTAL_PAID).getText())
+    return this.moneyOf(SELECTORS.ORDER_DETAIL.TOTAL_PAID)
   }
 
   async getPaymentMethodText(): Promise<string> {
@@ -46,6 +57,80 @@ export class OrderDetailPage extends BasePage {
 
   async getStatusText(): Promise<string> {
     return this.$(SELECTORS.ORDER_DETAIL.STATUS_BADGE).getText()
+  }
+
+  // ---- Completed-order receipt fields (order-history §4.6) ----
+
+  /** Header order number, e.g. "#OD260811-32683488". */
+  async getOrderId(): Promise<string> {
+    return this.$(SELECTORS.ORDER_DETAIL.ORDER_ID).getText()
+  }
+
+  /** True when the read-only receipt (Order information + Payment details) is shown. */
+  async isReceiptShown(): Promise<boolean> {
+    const info = await this.$(SELECTORS.ORDER_DETAIL.ORDER_INFORMATION).isExisting()
+    const pay = await this.$(SELECTORS.ORDER_DETAIL.PAYMENT_DETAILS).isExisting()
+    return info && pay
+  }
+
+  async getCashierText(): Promise<string> {
+    return this.$(SELECTORS.ORDER_DETAIL.CASHIER).getText()
+  }
+
+  async getCustomerText(): Promise<string> {
+    return this.$(SELECTORS.ORDER_DETAIL.CUSTOMER).getText()
+  }
+
+  async hasTechnicianGroup(): Promise<boolean> {
+    return this.$(SELECTORS.ORDER_DETAIL.TECH_GROUP).isExisting()
+  }
+
+  async getSubtotalCents(): Promise<number> {
+    return this.moneyOf(SELECTORS.ORDER_DETAIL.SUBTOTAL)
+  }
+
+  async getTipCents(): Promise<number> {
+    return this.moneyOf(SELECTORS.ORDER_DETAIL.TIP)
+  }
+
+  /** Number of service-line rows on the receipt. */
+  async getServiceLineCount(): Promise<number> {
+    return (await this.$$(SELECTORS.ORDER_DETAIL.SERVICE_LINE_ANY).getElements()).length
+  }
+
+  /** Per-line service prices in cents (Σ should equal Subtotal — §4.6.2). Service
+   * names can contain digits, so take each row's LAST money token. */
+  async getServiceLinePricesCents(): Promise<number[]> {
+    const prices = await this.$$(SELECTORS.ORDER_DETAIL.SERVICE_LINE_PRICE).getElements()
+    const out: number[] = []
+    for (const p of prices) {
+      const monies = (await p.getText()).replace(/\s+/g, " ").match(/-?\$[\d,]+\.\d{2}/g) ?? []
+      out.push(monies.length ? toCents(monies[monies.length - 1]) : 0)
+    }
+    return out
+  }
+
+  /** The "Successful" badge in the Payment details block (§4.6.5). */
+  async getPaymentStatusText(): Promise<string> {
+    return this.$(SELECTORS.ORDER_DETAIL.PAYMENT_STATUS).getText()
+  }
+
+  /** Card brand + last4, e.g. "Visa ··0043" (§4.6.5/4.6.6). */
+  async getCardBrandText(): Promise<string> {
+    return this.$(SELECTORS.ORDER_DETAIL.CARD_BRAND).getText()
+  }
+
+  /** True only for card-tender orders (cash/gift orders have no brand row). */
+  async hasCardBrand(): Promise<boolean> {
+    return this.$(SELECTORS.ORDER_DETAIL.CARD_BRAND).isExisting()
+  }
+
+  async hasTransaction(): Promise<boolean> {
+    return this.$(SELECTORS.ORDER_DETAIL.TRANSACTION_ID).isExisting()
+  }
+
+  async getTransactionId(): Promise<string> {
+    return this.$(SELECTORS.ORDER_DETAIL.TRANSACTION_ID).getText()
   }
 
   async hasCancelAction(): Promise<boolean> {
@@ -79,7 +164,11 @@ export class OrderDetailPage extends BasePage {
   }
 
   async isReasonSelected(key: string): Promise<boolean> {
-    return this.$(SELECTORS.ORDER_DETAIL.CANCEL_REASON(key)).isSelected()
+    // The reason label wraps a `button[role="radio"]` — read its checked state.
+    const radio = this.$(SELECTORS.ORDER_DETAIL.CANCEL_REASON(key)).$('button[role="radio"]')
+    const state = await radio.getAttribute("data-state")
+    if (state) return state === "checked"
+    return (await radio.getAttribute("aria-checked")) === "true"
   }
 
   async selectCancelReason(key: string): Promise<void> {

@@ -25,7 +25,7 @@ const waitForAppiumReady = async (host: string, port: number, timeout = 20_000):
 
 /**
  * Android config — drives the real P8D Android build (package
- * `com.fastboy.volt_pos`, `src-tauri/gen/android`) on a physical device
+ * `com.fastboy.volt_pos.debug`, `src-tauri/gen/android`) on a physical device
  * connected over USB via adb + Appium's uiautomator2 driver.
  *
  * Prereqs on the host machine:

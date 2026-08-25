@@ -27,11 +27,14 @@
   --st-fail: #d03b3b;
   --st-broken: #ec835a;
   --st-skip: #fab219;
+  /* "not run" — declared in code but no result this run (neutral grey, not a hue) */
+  --st-notrun: #8a92a3;
   /* soft washes for chips/rows (10–14% of the status hue over the surface) */
   --st-pass-soft: rgba(12, 163, 12, 0.12);
   --st-fail-soft: rgba(208, 59, 59, 0.13);
   --st-broken-soft: rgba(236, 131, 90, 0.16);
   --st-skip-soft: rgba(250, 178, 25, 0.16);
+  --st-notrun-soft: rgba(138, 146, 163, 0.15);
 
   --shadow: 0 1px 2px rgba(11, 11, 11, 0.04), 0 8px 24px rgba(11, 11, 11, 0.05);
   --radius: 14px;
@@ -53,6 +56,8 @@
     --st-fail-soft: rgba(208, 59, 59, 0.2);
     --st-broken-soft: rgba(236, 131, 90, 0.2);
     --st-skip-soft: rgba(250, 178, 25, 0.18);
+    --st-notrun: #9aa3b5;
+    --st-notrun-soft: rgba(154, 164, 184, 0.2);
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.45);
   }
 }
@@ -71,6 +76,8 @@
   --st-fail-soft: rgba(208, 59, 59, 0.2);
   --st-broken-soft: rgba(236, 131, 90, 0.2);
   --st-skip-soft: rgba(250, 178, 25, 0.18);
+  --st-notrun: #9aa3b5;
+  --st-notrun-soft: rgba(154, 164, 184, 0.2);
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px rgba(0, 0, 0, 0.45);
 }
 
@@ -165,7 +172,7 @@ body {
 /* ---- KPI tiles ---- */
 .kpis {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(7, 1fr);
   gap: 12px;
   margin-bottom: 16px;
 }
@@ -500,6 +507,14 @@ body {
 :root:where(:not([data-theme="light"])) .chip.skipped {
   color: var(--st-skip);
 }
+.chip.notRun {
+  background: var(--st-notrun-soft);
+  color: #5f6b7e;
+}
+:root[data-theme="dark"] .chip.notRun,
+:root:where(:not([data-theme="light"])) .chip.notRun {
+  color: var(--st-notrun);
+}
 
 .empty {
   padding: 48px 18px;
@@ -520,6 +535,11 @@ body {
   border-radius: 5px;
 }
 
+@media (max-width: 1200px) {
+  .kpis {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
 @media (max-width: 900px) {
   .kpis {
     grid-template-columns: repeat(3, 1fr);

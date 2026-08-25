@@ -5,10 +5,11 @@ export const STATUS_META: Record<Status, { label: string; color: string; icon: s
   passed: { label: "Passed", color: "var(--st-pass)", icon: "✓" },
   failed: { label: "Failed", color: "var(--st-fail)", icon: "✕" },
   broken: { label: "Broken", color: "var(--st-broken)", icon: "!" },
-  skipped: { label: "Skipped", color: "var(--st-skip)", icon: "–" }
+  skipped: { label: "Skipped", color: "var(--st-skip)", icon: "–" },
+  notRun: { label: "Chưa chạy", color: "var(--st-notrun)", icon: "∅" }
 }
 
-export const STATUS_ORDER: Status[] = ["passed", "failed", "broken", "skipped"]
+export const STATUS_ORDER: Status[] = ["passed", "failed", "broken", "skipped", "notRun"]
 
 /** 12345 → "12,345" */
 export function fmtInt(n: number): string {

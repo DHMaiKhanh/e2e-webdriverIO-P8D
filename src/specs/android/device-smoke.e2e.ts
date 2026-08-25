@@ -17,7 +17,7 @@
 import { expect } from "@wdio/globals"
 import { logger } from "../../utils/logger.js"
 
-const APP_ID = "com.fastboy.volt_pos"
+const APP_ID = "com.fastboy.volt_pos.debug"
 
 describe("P8D Android device smoke @smoke", () => {
   it("has the app in the foreground on the correct activity", async () => {

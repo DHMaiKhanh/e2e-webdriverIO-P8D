@@ -3,7 +3,7 @@
     "appium:automationName": "UiAutomator2",
     "appium:deviceName": "emulator-5554",
     "appium:udid": "emulator-5554",
-    "appium:appPackage": "com.fastboy.volt_pos",
+    "appium:appPackage": "com.fastboy.volt_pos.debug",
     "appium:appActivity": ".MainActivity",
     "appium:noReset": true,
     "appium:newCommandTimeout": 240,

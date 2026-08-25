@@ -1,27 +1,137 @@
 {
-  "generatedAt": 1786358528875,
+  "generatedAt": 1786616441218,
   "runLabel": "Kết quả lần chạy gần nhất",
   "source": "../reports/allure-results",
   "summary": {
-    "total": 41,
-    "passed": 39,
-    "failed": 0,
-    "broken": 0,
+    "total": 107,
+    "passed": 84,
+    "failed": 8,
+    "broken": 3,
     "skipped": 2,
-    "passRate": 100,
-    "durationMs": 109574
+    "notRun": 10,
+    "passRate": 88.4,
+    "durationMs": 445343
   },
   "features": [
     {
       "name": "Cash payment · by code (deep-link, no finalize)",
       "area": "android/payment",
       "total": 8,
+      "passed": 2,
+      "failed": 3,
+      "broken": 3,
+      "skipped": 0,
+      "notRun": 0,
+      "passRate": 25,
+      "durationMs": 59110
+    },
+    {
+      "name": "Other payment · by code (deep-link, no finalize)",
+      "area": "android/payment",
+      "total": 6,
+      "passed": 4,
+      "failed": 2,
+      "broken": 0,
+      "skipped": 0,
+      "notRun": 0,
+      "passRate": 66.7,
+      "durationMs": 14927
+    },
+    {
+      "name": "Gift card · by code (deep-link, no finalize)",
+      "area": "android/payment",
+      "total": 4,
+      "passed": 2,
+      "failed": 2,
+      "broken": 0,
+      "skipped": 0,
+      "notRun": 0,
+      "passRate": 50,
+      "durationMs": 9599
+    },
+    {
+      "name": "SPIKE · payment suite can run by code (webview DOM is queryable)",
+      "area": "android",
+      "total": 2,
+      "passed": 1,
+      "failed": 1,
+      "broken": 0,
+      "skipped": 0,
+      "notRun": 0,
+      "passRate": 50,
+      "durationMs": 1936
+    },
+    {
+      "name": "Order History · completed-order receipt",
+      "area": "android/order-history",
+      "total": 11,
+      "passed": 11,
+      "failed": 0,
+      "broken": 0,
+      "skipped": 0,
+      "notRun": 0,
+      "passRate": 100,
+      "durationMs": 51038
+    },
+    {
+      "name": "Order History · filter sheet",
+      "area": "android/order-history",
+      "total": 9,
+      "passed": 9,
+      "failed": 0,
+      "broken": 0,
+      "skipped": 0,
+      "notRun": 0,
+      "passRate": 100,
+      "durationMs": 66596
+    },
+    {
+      "name": "Order History · date navigation",
+      "area": "android/order-history",
+      "total": 8,
       "passed": 8,
       "failed": 0,
       "broken": 0,
       "skipped": 0,
+      "notRun": 0,
       "passRate": 100,
-      "durationMs": 15646
+      "durationMs": 27346
+    },
+    {
+      "name": "Order History · status tabs",
+      "area": "android/order-history",
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "broken": 0,
+      "skipped": 0,
+      "notRun": 0,
+      "passRate": 100,
+      "durationMs": 28027
+    },
+    {
+      "name": "Order History · list — browse",
+      "area": "android/order-history",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "broken": 0,
+      "skipped": 0,
+      "notRun": 0,
+      "passRate": 100,
+      "durationMs": 37364
+    },
+    {
+      "name": "Order History · per-customer history",
+      "area": "android/order-history",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "broken": 0,
+      "skipped": 0,
+      "notRun": 0,
+      "passRate": 100,
+      "durationMs": 28002
     },
     {
       "name": "Card payment · by code (deep-link, unavailable state)",
@@ -31,19 +141,9 @@
       "failed": 0,
       "broken": 0,
       "skipped": 2,
+      "notRun": 0,
       "passRate": 100,
-      "durationMs": 6371
-    },
-    {
-      "name": "Other payment · by code (deep-link, no finalize)",
-      "area": "android/payment",
-      "total": 6,
-      "passed": 6,
-      "failed": 0,
-      "broken": 0,
-      "skipped": 0,
-      "passRate": 100,
-      "durationMs": 12895
+      "durationMs": 6089
     },
     {
       "name": "Add Tip · by code (deep-link, no commit)",
@@ -53,19 +153,45 @@
       "failed": 0,
       "broken": 0,
       "skipped": 0,
+      "notRun": 0,
       "passRate": 100,
-      "durationMs": 11788
+      "durationMs": 14410
     },
     {
-      "name": "Gift card · by code (deep-link, no finalize)",
-      "area": "android/payment",
-      "total": 4,
-      "passed": 4,
+      "name": "Order History · search",
+      "area": "android/order-history",
+      "total": 5,
+      "passed": 5,
       "failed": 0,
       "broken": 0,
       "skipped": 0,
+      "notRun": 0,
       "passRate": 100,
-      "durationMs": 7035
+      "durationMs": 32396
+    },
+    {
+      "name": "P8D Android — staff token login form",
+      "area": "android",
+      "total": 5,
+      "passed": 0,
+      "failed": 0,
+      "broken": 0,
+      "skipped": 0,
+      "notRun": 5,
+      "passRate": 0,
+      "durationMs": 0
+    },
+    {
+      "name": "P8D Android — staff token login",
+      "area": "android",
+      "total": 3,
+      "passed": 0,
+      "failed": 0,
+      "broken": 0,
+      "skipped": 0,
+      "notRun": 3,
+      "passRate": 0,
+      "durationMs": 0
     },
     {
       "name": "P8D Android device smoke",
@@ -75,8 +201,9 @@
       "failed": 0,
       "broken": 0,
       "skipped": 0,
+      "notRun": 0,
       "passRate": 100,
-      "durationMs": 1061
+      "durationMs": 1873
     },
     {
       "name": "RESCAN · Tip + Card behavior probe",
@@ -86,19 +213,21 @@
       "failed": 0,
       "broken": 0,
       "skipped": 0,
+      "notRun": 0,
       "passRate": 100,
-      "durationMs": 11888
+      "durationMs": 11601
     },
     {
-      "name": "SPIKE · payment suite can run by code (webview DOM is queryable)",
+      "name": "_harvest order-history selectors",
       "area": "android",
-      "total": 2,
-      "passed": 2,
+      "total": 1,
+      "passed": 1,
       "failed": 0,
       "broken": 0,
       "skipped": 0,
+      "notRun": 0,
       "passRate": 100,
-      "durationMs": 1290
+      "durationMs": 14050
     },
     {
       "name": "_harvest payment selectors",
@@ -108,8 +237,9 @@
       "failed": 0,
       "broken": 0,
       "skipped": 0,
+      "notRun": 0,
       "passRate": 100,
-      "durationMs": 12885
+      "durationMs": 12386
     },
     {
       "name": "Android app launch",
@@ -119,8 +249,9 @@
       "failed": 0,
       "broken": 0,
       "skipped": 0,
+      "notRun": 0,
       "passRate": 100,
-      "durationMs": 3018
+      "durationMs": 2526
     },
     {
       "name": "Android open app (manual control demo)",
@@ -130,8 +261,9 @@
       "failed": 0,
       "broken": 0,
       "skipped": 0,
+      "notRun": 0,
       "passRate": 100,
-      "durationMs": 22981
+      "durationMs": 23168
     },
     {
       "name": "Android page-source dump (selector map)",
@@ -141,8 +273,9 @@
       "failed": 0,
       "broken": 0,
       "skipped": 0,
+      "notRun": 0,
       "passRate": 100,
-      "durationMs": 2669
+      "durationMs": 2856
     },
     {
       "name": "P8D Android — app",
@@ -152,11 +285,48 @@
       "failed": 0,
       "broken": 0,
       "skipped": 0,
+      "notRun": 0,
       "passRate": 100,
-      "durationMs": 47
+      "durationMs": 43
+    },
+    {
+      "name": "P8D Android — login once",
+      "area": "android",
+      "total": 1,
+      "passed": 0,
+      "failed": 0,
+      "broken": 0,
+      "skipped": 0,
+      "notRun": 1,
+      "passRate": 0,
+      "durationMs": 0
+    },
+    {
+      "name": "P8D Android — switch shop via staff token",
+      "area": "android",
+      "total": 1,
+      "passed": 0,
+      "failed": 0,
+      "broken": 0,
+      "skipped": 0,
+      "notRun": 1,
+      "passRate": 0,
+      "durationMs": 0
     }
   ],
   "tests": [
+    {
+      "id": null,
+      "title": "dumps facts for each Order-History surface",
+      "name": "dumps facts for each Order-History surface",
+      "tags": [],
+      "feature": "_harvest order-history selectors",
+      "area": "android",
+      "status": "passed",
+      "durationMs": 14050,
+      "start": 1786614911228,
+      "error": null
+    },
     {
       "id": null,
       "title": "dumps facts for each tender route",
@@ -165,8 +335,8 @@
       "feature": "_harvest payment selectors",
       "area": "android",
       "status": "passed",
-      "durationMs": 12885,
-      "start": 1786358310602,
+      "durationMs": 12386,
+      "start": 1786614938059,
       "error": null
     },
     {
@@ -179,8 +349,8 @@
       "feature": "Add Tip · by code (deep-link, no commit)",
       "area": "android/payment",
       "status": "passed",
-      "durationMs": 3737,
-      "start": 1786358512019,
+      "durationMs": 3381,
+      "start": 1786615608235,
       "error": null
     },
     {
@@ -193,8 +363,8 @@
       "feature": "Add Tip · by code (deep-link, no commit)",
       "area": "android/payment",
       "status": "passed",
-      "durationMs": 1687,
-      "start": 1786358505580,
+      "durationMs": 1831,
+      "start": 1786615600268,
       "error": null
     },
     {
@@ -207,8 +377,8 @@
       "feature": "Add Tip · by code (deep-link, no commit)",
       "area": "android/payment",
       "status": "passed",
-      "durationMs": 1613,
-      "start": 1786358503966,
+      "durationMs": 3064,
+      "start": 1786615597203,
       "error": null
     },
     {
@@ -221,8 +391,8 @@
       "feature": "Add Tip · by code (deep-link, no commit)",
       "area": "android/payment",
       "status": "passed",
-      "durationMs": 2270,
-      "start": 1786358509749,
+      "durationMs": 3161,
+      "start": 1786615605074,
       "error": null
     },
     {
@@ -235,8 +405,8 @@
       "feature": "Add Tip · by code (deep-link, no commit)",
       "area": "android/payment",
       "status": "passed",
-      "durationMs": 2481,
-      "start": 1786358507267,
+      "durationMs": 2973,
+      "start": 1786615602100,
       "error": null
     },
     {
@@ -247,8 +417,8 @@
       "feature": "Android app launch",
       "area": "android",
       "status": "passed",
-      "durationMs": 3018,
-      "start": 1786358363429,
+      "durationMs": 2526,
+      "start": 1786614992701,
       "error": null
     },
     {
@@ -259,8 +429,8 @@
       "feature": "Android open app (manual control demo)",
       "area": "android",
       "status": "passed",
-      "durationMs": 22981,
-      "start": 1786358391153,
+      "durationMs": 23168,
+      "start": 1786615026960,
       "error": null
     },
     {
@@ -271,8 +441,8 @@
       "feature": "Android page-source dump (selector map)",
       "area": "android",
       "status": "passed",
-      "durationMs": 2669,
-      "start": 1786358381676,
+      "durationMs": 2856,
+      "start": 1786615015227,
       "error": null
     },
     {
@@ -285,8 +455,8 @@
       "feature": "Card payment · by code (deep-link, unavailable state)",
       "area": "android/payment",
       "status": "skipped",
-      "durationMs": 0,
-      "start": 1786358428440,
+      "durationMs": 1,
+      "start": 1786615407222,
       "error": null
     },
     {
@@ -299,8 +469,8 @@
       "feature": "Card payment · by code (deep-link, unavailable state)",
       "area": "android/payment",
       "status": "skipped",
-      "durationMs": 1,
-      "start": 1786358428440,
+      "durationMs": 0,
+      "start": 1786615407223,
       "error": null
     },
     {
@@ -313,8 +483,8 @@
       "feature": "Card payment · by code (deep-link, unavailable state)",
       "area": "android/payment",
       "status": "passed",
-      "durationMs": 1282,
-      "start": 1786358422069,
+      "durationMs": 1260,
+      "start": 1786615401132,
       "error": null
     },
     {
@@ -327,8 +497,8 @@
       "feature": "Card payment · by code (deep-link, unavailable state)",
       "area": "android/payment",
       "status": "passed",
-      "durationMs": 1740,
-      "start": 1786358426700,
+      "durationMs": 1979,
+      "start": 1786615405243,
       "error": null
     },
     {
@@ -341,8 +511,8 @@
       "feature": "Card payment · by code (deep-link, unavailable state)",
       "area": "android/payment",
       "status": "passed",
-      "durationMs": 1797,
-      "start": 1786358424903,
+      "durationMs": 1375,
+      "start": 1786615403868,
       "error": null
     },
     {
@@ -355,8 +525,8 @@
       "feature": "Card payment · by code (deep-link, unavailable state)",
       "area": "android/payment",
       "status": "passed",
-      "durationMs": 1551,
-      "start": 1786358423352,
+      "durationMs": 1474,
+      "start": 1786615402393,
       "error": null
     },
     {
@@ -369,8 +539,8 @@
       "feature": "Cash payment · by code (deep-link, no finalize)",
       "area": "android/payment",
       "status": "passed",
-      "durationMs": 1665,
-      "start": 1786358440512,
+      "durationMs": 2078,
+      "start": 1786615425770,
       "error": null
     },
     {
@@ -382,10 +552,13 @@
       ],
       "feature": "Cash payment · by code (deep-link, no finalize)",
       "area": "android/payment",
-      "status": "passed",
-      "durationMs": 1711,
-      "start": 1786358438800,
-      "error": null
+      "status": "failed",
+      "durationMs": 2451,
+      "start": 1786615423319,
+      "error": {
+        "message": "expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false",
+        "trace": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n    at Context.<anonymous> (D:\\Project\\P8D\\WebdriverIO_P8D\\src\\specs\\android\\payment\\cash.e2e.ts:34:45)\n    at async Context.executeAsync (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:1108:20)\n    at async Context.testFrameworkFnWrapper (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:1189:14)"
+      }
     },
     {
       "id": "CASH-08",
@@ -396,10 +569,13 @@
       ],
       "feature": "Cash payment · by code (deep-link, no finalize)",
       "area": "android/payment",
-      "status": "passed",
-      "durationMs": 2053,
-      "start": 1786358451217,
-      "error": null
+      "status": "failed",
+      "durationMs": 1510,
+      "start": 1786615529693,
+      "error": {
+        "message": "expect(received).toBeLessThan(expected)\n\nExpected: < 0\nReceived:   1",
+        "trace": "Error: expect(received).toBeLessThan(expected)\n\nExpected: < 0\nReceived:   1\n    at Context.<anonymous> (D:\\Project\\P8D\\WebdriverIO_P8D\\src\\specs\\android\\payment\\cash.e2e.ts:78:54)\n    at async Context.executeAsync (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:1108:20)\n    at async Context.testFrameworkFnWrapper (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:1189:14)"
+      }
     },
     {
       "id": "CASH-07",
@@ -411,8 +587,8 @@
       "feature": "Cash payment · by code (deep-link, no finalize)",
       "area": "android/payment",
       "status": "passed",
-      "durationMs": 2617,
-      "start": 1786358448600,
+      "durationMs": 2161,
+      "start": 1786615526127,
       "error": null
     },
     {
@@ -424,10 +600,13 @@
       ],
       "feature": "Cash payment · by code (deep-link, no finalize)",
       "area": "android/payment",
-      "status": "passed",
-      "durationMs": 1740,
-      "start": 1786358444192,
-      "error": null
+      "status": "broken",
+      "durationMs": 16092,
+      "start": 1786615477223,
+      "error": {
+        "message": "[CashPaymentPage] quick cash $100 not clickable",
+        "trace": "Error: [CashPaymentPage] quick cash $100 not clickable\n    at <anonymous> (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\webdriverio\\build\\node.js:6216:15)\n    at async Element.wrapCommandFn (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:982:23)\n    at async Element.elementErrorHandlerCallbackFn (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\webdriverio\\build\\node.js:9801:24)\n    at async Element.wrapCommandFn (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:982:23)\n    at async Element.wrapCommandFn (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:982:23)\n    at async Element.elementErrorHandlerCallbackFn (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\webdriverio\\build\\node.js:9801:24)\n    at async Element.wrapCommandFn (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:982:23)\n    at async CashPaymentPage.safeClick (D:\\Project\\P8D\\WebdriverIO_P8D\\src\\pages\\base.page.ts:103:5)\n    at async CashPaymentPage.enterQuickCash (D:\\Project\\P8D\\WebdriverIO_P8D\\src\\pages\\payment\\cash-payment.page.ts:51:5)\n    at async Context.<anonymous> (D:\\Project\\P8D\\WebdriverIO_P8D\\src\\specs\\android\\payment\\cash.e2e.ts:53:5)"
+      }
     },
     {
       "id": "CASH-06",
@@ -438,10 +617,13 @@
       ],
       "feature": "Cash payment · by code (deep-link, no finalize)",
       "area": "android/payment",
-      "status": "passed",
-      "durationMs": 2668,
-      "start": 1786358445932,
-      "error": null
+      "status": "broken",
+      "durationMs": 16617,
+      "start": 1786615509509,
+      "error": {
+        "message": "[CashPaymentPage] quick cash $120 not clickable",
+        "trace": "Error: [CashPaymentPage] quick cash $120 not clickable\n    at <anonymous> (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\webdriverio\\build\\node.js:6216:15)\n    at async Element.wrapCommandFn (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:982:23)\n    at async Element.elementErrorHandlerCallbackFn (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\webdriverio\\build\\node.js:9801:24)\n    at async Element.wrapCommandFn (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:982:23)\n    at async Element.wrapCommandFn (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:982:23)\n    at async Element.elementErrorHandlerCallbackFn (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\webdriverio\\build\\node.js:9801:24)\n    at async Element.wrapCommandFn (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:982:23)\n    at async CashPaymentPage.safeClick (D:\\Project\\P8D\\WebdriverIO_P8D\\src\\pages\\base.page.ts:103:5)\n    at async CashPaymentPage.enterQuickCash (D:\\Project\\P8D\\WebdriverIO_P8D\\src\\pages\\payment\\cash-payment.page.ts:51:5)\n    at async Context.<anonymous> (D:\\Project\\P8D\\WebdriverIO_P8D\\src\\specs\\android\\payment\\cash.e2e.ts:64:7)"
+      }
     },
     {
       "id": "CASH-04",
@@ -452,10 +634,13 @@
       ],
       "feature": "Cash payment · by code (deep-link, no finalize)",
       "area": "android/payment",
-      "status": "passed",
-      "durationMs": 2014,
-      "start": 1786358442177,
-      "error": null
+      "status": "broken",
+      "durationMs": 16219,
+      "start": 1786615444626,
+      "error": {
+        "message": "[CashPaymentPage] quick cash Exact not clickable",
+        "trace": "Error: [CashPaymentPage] quick cash Exact not clickable\n    at <anonymous> (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\webdriverio\\build\\node.js:6216:15)\n    at async Element.wrapCommandFn (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:982:23)\n    at async Element.elementErrorHandlerCallbackFn (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\webdriverio\\build\\node.js:9801:24)\n    at async Element.wrapCommandFn (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:982:23)\n    at async Element.wrapCommandFn (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:982:23)\n    at async Element.elementErrorHandlerCallbackFn (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\webdriverio\\build\\node.js:9801:24)\n    at async Element.wrapCommandFn (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:982:23)\n    at async CashPaymentPage.safeClick (D:\\Project\\P8D\\WebdriverIO_P8D\\src\\pages\\base.page.ts:103:5)\n    at async CashPaymentPage.enterQuickCash (D:\\Project\\P8D\\WebdriverIO_P8D\\src\\pages\\payment\\cash-payment.page.ts:51:5)\n    at async Context.<anonymous> (D:\\Project\\P8D\\WebdriverIO_P8D\\src\\specs\\android\\payment\\cash.e2e.ts:45:5)"
+      }
     },
     {
       "id": "CASH-01",
@@ -466,10 +651,13 @@
       ],
       "feature": "Cash payment · by code (deep-link, no finalize)",
       "area": "android/payment",
-      "status": "passed",
-      "durationMs": 1178,
-      "start": 1786358437621,
-      "error": null
+      "status": "failed",
+      "durationMs": 1982,
+      "start": 1786615419356,
+      "error": {
+        "message": "expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false",
+        "trace": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n    at Context.<anonymous> (D:\\Project\\P8D\\WebdriverIO_P8D\\src\\specs\\android\\payment\\cash.e2e.ts:28:54)\n    at async Context.executeAsync (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:1108:20)\n    at async Context.testFrameworkFnWrapper (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:1189:14)"
+      }
     },
     {
       "id": "GC-06",
@@ -481,8 +669,8 @@
       "feature": "Gift card · by code (deep-link, no finalize)",
       "area": "android/payment",
       "status": "passed",
-      "durationMs": 3120,
-      "start": 1786358467404,
+      "durationMs": 3876,
+      "start": 1786615552235,
       "error": null
     },
     {
@@ -494,10 +682,13 @@
       ],
       "feature": "Gift card · by code (deep-link, no finalize)",
       "area": "android/payment",
-      "status": "passed",
-      "durationMs": 1194,
-      "start": 1786358465055,
-      "error": null
+      "status": "failed",
+      "durationMs": 1771,
+      "start": 1786615548983,
+      "error": {
+        "message": "expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false",
+        "trace": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n    at Context.<anonymous> (D:\\Project\\P8D\\WebdriverIO_P8D\\src\\specs\\android\\payment\\gift-card.e2e.ts:36:84)\n    at async Context.executeAsync (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:1108:20)\n    at async Context.testFrameworkFnWrapper (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:1189:14)"
+      }
     },
     {
       "id": "GC-01",
@@ -508,10 +699,13 @@
       ],
       "feature": "Gift card · by code (deep-link, no finalize)",
       "area": "android/payment",
-      "status": "passed",
-      "durationMs": 1567,
-      "start": 1786358463488,
-      "error": null
+      "status": "failed",
+      "durationMs": 2471,
+      "start": 1786615544531,
+      "error": {
+        "message": "expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false",
+        "trace": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n    at Context.<anonymous> (D:\\Project\\P8D\\WebdriverIO_P8D\\src\\specs\\android\\payment\\gift-card.e2e.ts:32:45)\n    at async Context.executeAsync (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:1108:20)\n    at async Context.testFrameworkFnWrapper (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:1189:14)"
+      }
     },
     {
       "id": "GC-03",
@@ -523,8 +717,778 @@
       "feature": "Gift card · by code (deep-link, no finalize)",
       "area": "android/payment",
       "status": "passed",
-      "durationMs": 1154,
-      "start": 1786358466249,
+      "durationMs": 1481,
+      "start": 1786615550754,
+      "error": null
+    },
+    {
+      "id": "OHDT-11",
+      "title": "Back returns to the Orders list",
+      "name": "OHDT-11 @regression · Back returns to the Orders list",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · completed-order receipt",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 4314,
+      "start": 1786615188972,
+      "error": null
+    },
+    {
+      "id": "OHDT-10",
+      "title": "Cancel order opens the reason dialog (does not confirm)",
+      "name": "OHDT-10 @regression · Cancel order opens the reason dialog (does not confirm)",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · completed-order receipt",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 6642,
+      "start": 1786615182329,
+      "error": null
+    },
+    {
+      "id": "OHDT-06",
+      "title": "card orders expose a Transaction ID",
+      "name": "OHDT-06 @regression · card orders expose a Transaction ID",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · completed-order receipt",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 3862,
+      "start": 1786615165323,
+      "error": null
+    },
+    {
+      "id": "OHDT-08",
+      "title": "footer offers Send / Reprint / Cancel actions",
+      "name": "OHDT-08 @regression · footer offers Send / Reprint / Cancel actions",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · completed-order receipt",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 4004,
+      "start": 1786615172844,
+      "error": null
+    },
+    {
+      "id": "OHDT-07",
+      "title": "Order information lists Cashier and Customer",
+      "name": "OHDT-07 @regression · Order information lists Cashier and Customer",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · completed-order receipt",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 3658,
+      "start": 1786615169185,
+      "error": null
+    },
+    {
+      "id": "OHDT-05",
+      "title": "Payment details show status and (for card) brand ··last4",
+      "name": "OHDT-05 @regression · Payment details show status and (for card) brand ··last4",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · completed-order receipt",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 3895,
+      "start": 1786615161428,
+      "error": null
+    },
+    {
+      "id": "OHDT-09",
+      "title": "Send receipt opens Email/Text options (does not send)",
+      "name": "OHDT-09 @regression · Send receipt opens Email/Text options (does not send)",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · completed-order receipt",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 5477,
+      "start": 1786615176851,
+      "error": null
+    },
+    {
+      "id": "OHDT-01",
+      "title": "shows Order information, technician group and service lines",
+      "name": "OHDT-01 @smoke · shows Order information, technician group and service lines",
+      "tags": [
+        "@smoke"
+      ],
+      "feature": "Order History · completed-order receipt",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 5624,
+      "start": 1786615142240,
+      "error": null
+    },
+    {
+      "id": "OHDT-02",
+      "title": "Subtotal equals the sum of service-line prices",
+      "name": "OHDT-02 @smoke · Subtotal equals the sum of service-line prices",
+      "tags": [
+        "@smoke"
+      ],
+      "feature": "Order History · completed-order receipt",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 4996,
+      "start": 1786615147865,
+      "error": null
+    },
+    {
+      "id": "OHDT-04",
+      "title": "Tip is a well-formed amount",
+      "name": "OHDT-04 @regression · Tip is a well-formed amount",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · completed-order receipt",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 3970,
+      "start": 1786615157458,
+      "error": null
+    },
+    {
+      "id": "OHDT-03",
+      "title": "Total paid reconciles Subtotal + Tip (+ any adjustments)",
+      "name": "OHDT-03 @smoke · Total paid reconciles Subtotal + Tip (+ any adjustments)",
+      "tags": [
+        "@smoke"
+      ],
+      "feature": "Order History · completed-order receipt",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 4596,
+      "start": 1786615152861,
+      "error": null
+    },
+    {
+      "id": "OHD-04",
+      "title": "date label opens the Select date picker",
+      "name": "OHD-04 @smoke · date label opens the Select date picker",
+      "tags": [
+        "@smoke"
+      ],
+      "feature": "Order History · date navigation",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 2237,
+      "start": 1786615109068,
+      "error": null
+    },
+    {
+      "id": "OHD-01",
+      "title": "defaults to Today",
+      "name": "OHD-01 @regression · defaults to Today",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · date navigation",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 1227,
+      "start": 1786615102762,
+      "error": null
+    },
+    {
+      "id": "OHD-07",
+      "title": "future days are disabled in the calendar",
+      "name": "OHD-07 @regression · future days are disabled in the calendar",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · date navigation",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 2318,
+      "start": 1786615122708,
+      "error": null
+    },
+    {
+      "id": "OHD-06",
+      "title": "Last 7 days preset keeps the picker healthy",
+      "name": "OHD-06 @regression · Last 7 days preset keeps the picker healthy",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · date navigation",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 5189,
+      "start": 1786615117518,
+      "error": null
+    },
+    {
+      "id": "OHD-03",
+      "title": "Next day is disabled on today (no future browsing)",
+      "name": "OHD-03 @regression · Next day is disabled on today (no future browsing)",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · date navigation",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 2258,
+      "start": 1786615106809,
+      "error": null
+    },
+    {
+      "id": "OHD-08",
+      "title": "picking a past day + View orders reloads that day",
+      "name": "OHD-08 @smoke · picking a past day + View orders reloads that day",
+      "tags": [
+        "@smoke"
+      ],
+      "feature": "Order History · date navigation",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 5085,
+      "start": 1786615125027,
+      "error": null
+    },
+    {
+      "id": "OHD-02",
+      "title": "Previous day moves the label back one day",
+      "name": "OHD-02 @regression · Previous day moves the label back one day",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · date navigation",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 2820,
+      "start": 1786615103989,
+      "error": null
+    },
+    {
+      "id": "OHD-05",
+      "title": "Yesterday preset selects yesterday",
+      "name": "OHD-05 @regression · Yesterday preset selects yesterday",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · date navigation",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 6212,
+      "start": 1786615111306,
+      "error": null
+    },
+    {
+      "id": "OHF-08",
+      "title": "Apply closes the sheet and returns to the list",
+      "name": "OHF-08 @smoke · Apply closes the sheet and returns to the list",
+      "tags": [
+        "@smoke"
+      ],
+      "feature": "Order History · filter sheet",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 20654,
+      "start": 1786616343626,
+      "error": null
+    },
+    {
+      "id": "OHF-09",
+      "title": "Clear all resets every selection",
+      "name": "OHF-09 @regression · Clear all resets every selection",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · filter sheet",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 4641,
+      "start": 1786616364281,
+      "error": null
+    },
+    {
+      "id": "OHF-07",
+      "title": "combining Staff + Payment applies both",
+      "name": "OHF-07 @regression · combining Staff + Payment applies both",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · filter sheet",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 6398,
+      "start": 1786616337227,
+      "error": null
+    },
+    {
+      "id": "OHF-01",
+      "title": "Filter sheet shows Sort / Staff / Payment + Apply / Clear all",
+      "name": "OHF-01 @smoke · Filter sheet shows Sort / Staff / Payment + Apply / Clear all",
+      "tags": [
+        "@smoke"
+      ],
+      "feature": "Order History · filter sheet",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 4977,
+      "start": 1786616302316,
+      "error": null
+    },
+    {
+      "id": "OHF-04",
+      "title": "filtering by multiple staff (OR) applies",
+      "name": "OHF-04 @regression · filtering by multiple staff (OR) applies",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · filter sheet",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 6012,
+      "start": 1786616318997,
+      "error": null
+    },
+    {
+      "id": "OHF-03",
+      "title": "filtering by one staff never grows the result set",
+      "name": "OHF-03 @regression · filtering by one staff never grows the result set",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · filter sheet",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 6049,
+      "start": 1786616312947,
+      "error": null
+    },
+    {
+      "id": "OHF-06",
+      "title": "filtering by payment method (Card) never grows the set",
+      "name": "OHF-06 @regression · filtering by payment method (Card) never grows the set",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · filter sheet",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 6481,
+      "start": 1786616330745,
+      "error": null
+    },
+    {
+      "id": "OHF-02",
+      "title": "Sort toggles between Date completed and Last updated",
+      "name": "OHF-02 @regression · Sort toggles between Date completed and Last updated",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · filter sheet",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 5652,
+      "start": 1786616307294,
+      "error": null
+    },
+    {
+      "id": "OHF-05",
+      "title": "staff search narrows the staff option list",
+      "name": "OHF-05 @regression · staff search narrows the staff option list",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · filter sheet",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 5732,
+      "start": 1786616325010,
+      "error": null
+    },
+    {
+      "id": "OHL-07",
+      "title": "an empty day shows the empty state, not an error",
+      "name": "OHL-07 @regression · an empty day shows the empty state, not an error",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · list — browse",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 12136,
+      "start": 1786615293771,
+      "error": null
+    },
+    {
+      "id": "OHL-02",
+      "title": "each order card exposes all fields",
+      "name": "OHL-02 @regression · each order card exposes all fields",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · list — browse",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 1822,
+      "start": 1786615270527,
+      "error": null
+    },
+    {
+      "id": "OHL-04",
+      "title": "money and time render in the expected formats",
+      "name": "OHL-04 @regression · money and time render in the expected formats",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · list — browse",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 1504,
+      "start": 1786615273904,
+      "error": null
+    },
+    {
+      "id": "OHL-03",
+      "title": "order code matches #OD YYMMDD-######## format",
+      "name": "OHL-03 @regression · order code matches #OD YYMMDD-######## format",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · list — browse",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 1555,
+      "start": 1786615272349,
+      "error": null
+    },
+    {
+      "id": "OHL-01",
+      "title": "Orders list shows header, controls, tabs and cards",
+      "name": "OHL-01 @smoke · Orders list shows header, controls, tabs and cards",
+      "tags": [
+        "@smoke"
+      ],
+      "feature": "Order History · list — browse",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 1986,
+      "start": 1786615268540,
+      "error": null
+    },
+    {
+      "id": "OHL-06",
+      "title": "scrolling loads more cards without duplicates",
+      "name": "OHL-06 @regression · scrolling loads more cards without duplicates",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · list — browse",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 14701,
+      "start": 1786615279069,
+      "error": null
+    },
+    {
+      "id": "OHL-05",
+      "title": "tapping a card opens that exact order's detail",
+      "name": "OHL-05 @smoke · tapping a card opens that exact order's detail",
+      "tags": [
+        "@smoke"
+      ],
+      "feature": "Order History · list — browse",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 3660,
+      "start": 1786615275408,
+      "error": null
+    },
+    {
+      "id": "OHC-04",
+      "title": "Lifetime is at least the largest single order",
+      "name": "OHC-04 @regression · Lifetime is at least the largest single order",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · per-customer history",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 3636,
+      "start": 1786615073131,
+      "error": null
+    },
+    {
+      "id": "OHC-02",
+      "title": "Orders tab lists the customer's order history",
+      "name": "OHC-02 @smoke · Orders tab lists the customer's order history",
+      "tags": [
+        "@smoke"
+      ],
+      "feature": "Order History · per-customer history",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 3906,
+      "start": 1786615064967,
+      "error": null
+    },
+    {
+      "id": "OHC-01",
+      "title": "profile shows Points / Visits / Lifetime / Last visit",
+      "name": "OHC-01 @regression · profile shows Points / Visits / Lifetime / Last visit",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · per-customer history",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 3787,
+      "start": 1786615061179,
+      "error": null
+    },
+    {
+      "id": "OHC-06",
+      "title": "Rewards and History tabs switch content (History ≠ orders)",
+      "name": "OHC-06 @regression · Rewards and History tabs switch content (History ≠ orders)",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · per-customer history",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 5025,
+      "start": 1786615080807,
+      "error": null
+    },
+    {
+      "id": "OHC-05",
+      "title": "tapping an order opens its detail",
+      "name": "OHC-05 @smoke · tapping an order opens its detail",
+      "tags": [
+        "@smoke"
+      ],
+      "feature": "Order History · per-customer history",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 4038,
+      "start": 1786615076768,
+      "error": null
+    },
+    {
+      "id": "OHC-07",
+      "title": "the customer's phone is masked",
+      "name": "OHC-07 @regression · the customer's phone is masked",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · per-customer history",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 3354,
+      "start": 1786615085832,
+      "error": null
+    },
+    {
+      "id": "OHC-03",
+      "title": "Visits stat is populated and the Orders tab renders",
+      "name": "OHC-03 @regression · Visits stat is populated and the Orders tab renders",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · per-customer history",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 4256,
+      "start": 1786615068874,
+      "error": null
+    },
+    {
+      "id": "OHR-04",
+      "title": "a nonsense query shows the empty state, not an error",
+      "name": "OHR-04 @regression · a nonsense query shows the empty state, not an error",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · search",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 6739,
+      "start": 1786616399203,
+      "error": null
+    },
+    {
+      "id": "OHR-05",
+      "title": "clearing the query restores the full list",
+      "name": "OHR-05 @regression · clearing the query restores the full list",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · search",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 7495,
+      "start": 1786616405943,
+      "error": null
+    },
+    {
+      "id": "OHR-01",
+      "title": "Search opens then closes the search box",
+      "name": "OHR-01 @regression · Search opens then closes the search box",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · search",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 5366,
+      "start": 1786616381038,
+      "error": null
+    },
+    {
+      "id": "OHR-03",
+      "title": "searching a customer name keeps that customer's orders",
+      "name": "OHR-03 @regression · searching a customer name keeps that customer's orders",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · search",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 6771,
+      "start": 1786616392432,
+      "error": null
+    },
+    {
+      "id": "OHR-02",
+      "title": "searching an order code keeps the matching order",
+      "name": "OHR-02 @smoke · searching an order code keeps the matching order",
+      "tags": [
+        "@smoke"
+      ],
+      "feature": "Order History · search",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 6025,
+      "start": 1786616386406,
+      "error": null
+    },
+    {
+      "id": "OHS-06",
+      "title": "All → shows every status for the day",
+      "name": "OHS-06 @regression · All → shows every status for the day",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · status tabs",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 2381,
+      "start": 1786615380112,
+      "error": null
+    },
+    {
+      "id": "OHS-08",
+      "title": "In Use cards name the locking device",
+      "name": "OHS-08 @regression · In Use cards name the locking device",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · status tabs",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 4843,
+      "start": 1786615386106,
+      "error": null
+    },
+    {
+      "id": "OHS-02",
+      "title": "Pending → every card is Pending or In Use",
+      "name": "OHS-02 @regression · Pending → every card is Pending or In Use",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · status tabs",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 5175,
+      "start": 1786615364568,
+      "error": null
+    },
+    {
+      "id": "OHS-05",
+      "title": "Re-open → only re-opened orders (may be empty)",
+      "name": "OHS-05 @regression · Re-open → only re-opened orders (may be empty)",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · status tabs",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 2611,
+      "start": 1786615377501,
+      "error": null
+    },
+    {
+      "id": "OHS-01",
+      "title": "shows all five status tabs",
+      "name": "OHS-01 @smoke · shows all five status tabs",
+      "tags": [
+        "@smoke"
+      ],
+      "feature": "Order History · status tabs",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 1651,
+      "start": 1786615362916,
+      "error": null
+    },
+    {
+      "id": "OHS-04",
+      "title": "Successful - Settled → list switches to settled orders",
+      "name": "OHS-04 @regression · Successful - Settled → list switches to settled orders",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · status tabs",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 2630,
+      "start": 1786615374871,
+      "error": null
+    },
+    {
+      "id": "OHS-03",
+      "title": "Successful - Unsettled → every card is Unsettled",
+      "name": "OHS-03 @regression · Successful - Unsettled → every card is Unsettled",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · status tabs",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 5125,
+      "start": 1786615369745,
+      "error": null
+    },
+    {
+      "id": "OHS-07",
+      "title": "the active tab is highlighted and moves with selection",
+      "name": "OHS-07 @regression · the active tab is highlighted and moves with selection",
+      "tags": [
+        "@regression"
+      ],
+      "feature": "Order History · status tabs",
+      "area": "android/order-history",
+      "status": "passed",
+      "durationMs": 3611,
+      "start": 1786615382494,
       "error": null
     },
     {
@@ -537,8 +1501,8 @@
       "feature": "Other payment · by code (deep-link, no finalize)",
       "area": "android/payment",
       "status": "passed",
-      "durationMs": 3564,
-      "start": 1786358490204,
+      "durationMs": 3272,
+      "start": 1786615583149,
       "error": null
     },
     {
@@ -551,8 +1515,8 @@
       "feature": "Other payment · by code (deep-link, no finalize)",
       "area": "android/payment",
       "status": "passed",
-      "durationMs": 2249,
-      "start": 1786358485326,
+      "durationMs": 2306,
+      "start": 1786615577482,
       "error": null
     },
     {
@@ -564,10 +1528,13 @@
       ],
       "feature": "Other payment · by code (deep-link, no finalize)",
       "area": "android/payment",
-      "status": "passed",
-      "durationMs": 1832,
-      "start": 1786358483494,
-      "error": null
+      "status": "failed",
+      "durationMs": 1876,
+      "start": 1786615575605,
+      "error": {
+        "message": "expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false",
+        "trace": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n    at Context.<anonymous> (D:\\Project\\P8D\\WebdriverIO_P8D\\src\\specs\\android\\payment\\other.e2e.ts:42:54)\n    at async Context.executeAsync (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:1108:20)\n    at async Context.testFrameworkFnWrapper (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:1189:14)"
+      }
     },
     {
       "id": "OTH-01",
@@ -578,10 +1545,13 @@
       ],
       "feature": "Other payment · by code (deep-link, no finalize)",
       "area": "android/payment",
-      "status": "passed",
-      "durationMs": 1327,
-      "start": 1786358480870,
-      "error": null
+      "status": "failed",
+      "durationMs": 2369,
+      "start": 1786615569404,
+      "error": {
+        "message": "expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false",
+        "trace": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n    at Context.<anonymous> (D:\\Project\\P8D\\WebdriverIO_P8D\\src\\specs\\android\\payment\\other.e2e.ts:31:62)\n    at async Context.executeAsync (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:1108:20)\n    at async Context.testFrameworkFnWrapper (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:1189:14)"
+      }
     },
     {
       "id": "OTH-02",
@@ -593,8 +1563,8 @@
       "feature": "Other payment · by code (deep-link, no finalize)",
       "area": "android/payment",
       "status": "passed",
-      "durationMs": 1296,
-      "start": 1786358482198,
+      "durationMs": 1743,
+      "start": 1786615571774,
       "error": null
     },
     {
@@ -607,8 +1577,8 @@
       "feature": "Other payment · by code (deep-link, no finalize)",
       "area": "android/payment",
       "status": "passed",
-      "durationMs": 2627,
-      "start": 1786358487576,
+      "durationMs": 3361,
+      "start": 1786615579788,
       "error": null
     },
     {
@@ -619,8 +1589,128 @@
       "feature": "P8D Android — app",
       "area": "android",
       "status": "passed",
-      "durationMs": 47,
-      "start": 1786358356199,
+      "durationMs": 43,
+      "start": 1786614984684,
+      "error": null
+    },
+    {
+      "id": null,
+      "title": "signs in (or confirms an existing session) so later runs skip login",
+      "name": "signs in (or confirms an existing session) so later runs skip login",
+      "tags": [],
+      "feature": "P8D Android — login once",
+      "area": "android",
+      "status": "notRun",
+      "durationMs": 0,
+      "start": 0,
+      "error": null
+    },
+    {
+      "id": null,
+      "title": "cannot submit an empty staff token",
+      "name": "cannot submit an empty staff token",
+      "tags": [],
+      "feature": "P8D Android — staff token login",
+      "area": "android",
+      "status": "notRun",
+      "durationMs": 0,
+      "start": 0,
+      "error": null
+    },
+    {
+      "id": null,
+      "title": "does not sign in with an invalid staff token",
+      "name": "does not sign in with an invalid staff token",
+      "tags": [],
+      "feature": "P8D Android — staff token login",
+      "area": "android",
+      "status": "notRun",
+      "durationMs": 0,
+      "start": 0,
+      "error": null
+    },
+    {
+      "id": null,
+      "title": "loads the staff-token form",
+      "name": "loads the staff-token form",
+      "tags": [],
+      "feature": "P8D Android — staff token login",
+      "area": "android",
+      "status": "notRun",
+      "durationMs": 0,
+      "start": 0,
+      "error": null
+    },
+    {
+      "id": null,
+      "title": "does not authenticate a whitespace-only token",
+      "name": "does not authenticate a whitespace-only token",
+      "tags": [],
+      "feature": "P8D Android — staff token login form",
+      "area": "android",
+      "status": "notRun",
+      "durationMs": 0,
+      "start": 0,
+      "error": null
+    },
+    {
+      "id": null,
+      "title": "lets the operator retry after a rejected token",
+      "name": "lets the operator retry after a rejected token",
+      "tags": [],
+      "feature": "P8D Android — staff token login form",
+      "area": "android",
+      "status": "notRun",
+      "durationMs": 0,
+      "start": 0,
+      "error": null
+    },
+    {
+      "id": null,
+      "title": "reflects a typed token in the field",
+      "name": "reflects a typed token in the field",
+      "tags": [],
+      "feature": "P8D Android — staff token login form",
+      "area": "android",
+      "status": "notRun",
+      "durationMs": 0,
+      "start": 0,
+      "error": null
+    },
+    {
+      "id": null,
+      "title": "renders the token input, submit button and Staff Token label",
+      "name": "renders the token input, submit button and Staff Token label",
+      "tags": [],
+      "feature": "P8D Android — staff token login form",
+      "area": "android",
+      "status": "notRun",
+      "durationMs": 0,
+      "start": 0,
+      "error": null
+    },
+    {
+      "id": null,
+      "title": "starts with an empty token field on a fresh visit",
+      "name": "starts with an empty token field on a fresh visit",
+      "tags": [],
+      "feature": "P8D Android — staff token login form",
+      "area": "android",
+      "status": "notRun",
+      "durationMs": 0,
+      "start": 0,
+      "error": null
+    },
+    {
+      "id": null,
+      "title": "re-authenticates with STAFF_TOKEN and lands on that shop's home",
+      "name": "re-authenticates with STAFF_TOKEN and lands on that shop's home",
+      "tags": [],
+      "feature": "P8D Android — switch shop via staff token",
+      "area": "android",
+      "status": "notRun",
+      "durationMs": 0,
+      "start": 0,
       "error": null
     },
     {
@@ -631,8 +1721,8 @@
       "feature": "P8D Android device smoke",
       "area": "android",
       "status": "passed",
-      "durationMs": 389,
-      "start": 1786358374408,
+      "durationMs": 722,
+      "start": 1786615005780,
       "error": null
     },
     {
@@ -643,8 +1733,8 @@
       "feature": "P8D Android device smoke",
       "area": "android",
       "status": "passed",
-      "durationMs": 332,
-      "start": 1786358374076,
+      "durationMs": 548,
+      "start": 1786615005232,
       "error": null
     },
     {
@@ -655,8 +1745,8 @@
       "feature": "P8D Android device smoke",
       "area": "android",
       "status": "passed",
-      "durationMs": 340,
-      "start": 1786358373735,
+      "durationMs": 603,
+      "start": 1786615004629,
       "error": null
     },
     {
@@ -667,8 +1757,8 @@
       "feature": "RESCAN · Tip + Card behavior probe",
       "area": "android",
       "status": "passed",
-      "durationMs": 3230,
-      "start": 1786358343055,
+      "durationMs": 3339,
+      "start": 1786614970717,
       "error": null
     },
     {
@@ -679,8 +1769,8 @@
       "feature": "RESCAN · Tip + Card behavior probe",
       "area": "android",
       "status": "passed",
-      "durationMs": 8658,
-      "start": 1786358334397,
+      "durationMs": 8262,
+      "start": 1786614962455,
       "error": null
     },
     {
@@ -691,8 +1781,8 @@
       "feature": "SPIKE · payment suite can run by code (webview DOM is queryable)",
       "area": "android",
       "status": "passed",
-      "durationMs": 424,
-      "start": 1786358526266,
+      "durationMs": 474,
+      "start": 1786615623037,
       "error": null
     },
     {
@@ -702,10 +1792,13 @@
       "tags": [],
       "feature": "SPIKE · payment suite can run by code (webview DOM is queryable)",
       "area": "android",
-      "status": "passed",
-      "durationMs": 866,
-      "start": 1786358526691,
-      "error": null
+      "status": "failed",
+      "durationMs": 1462,
+      "start": 1786615624932,
+      "error": {
+        "message": "expect(received).toBe(expected) // Object.is equality\n\nExpected: 1100\nReceived: 0",
+        "trace": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: 1100\nReceived: 0\n    at Context.<anonymous> (D:\\Project\\P8D\\WebdriverIO_P8D\\src\\specs\\android\\webview-code-path-spike.e2e.ts:123:31)\n    at async Context.executeAsync (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:1108:20)\n    at async Context.testFrameworkFnWrapper (D:\\Project\\P8D\\WebdriverIO_P8D\\node_modules\\@wdio\\utils\\build\\index.js:1189:14)"
+      }
     }
   ]
 }

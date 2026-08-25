@@ -16,9 +16,11 @@ export const ROUTES = {
   APP: {
     HOME: "/",
     SETTINGS: "/settings",
-    /** Orders list (status-tab filtered) — docs/order-test-cases.md §2.1. */
+    /** Orders list (status-tab filtered) — docs/order-test-cases.md §2.1 &
+     * docs/order-history-test-cases.md §2.1 (the Order-History browse surface). */
     ORDERS: "/orders",
-    /** Single order detail / ticket — docs/order-test-cases.md §2.2. */
+    /** Single order detail / ticket / completed-order receipt —
+     * docs/order-test-cases.md §2.2 & docs/order-history-test-cases.md §2.5. */
     ORDER_DETAIL: (orderId: string): string => `/order/${orderId}`,
     ORDER_CHECKOUT: (orderId: string): string => `/order/${orderId}/checkout`,
     /**
@@ -26,7 +28,17 @@ export const ROUTES = {
      * Review). Route inferred from UI navigation (docs/order-test-cases.md §9);
      * confirm against the app router before relying on browser.url() here.
      */
-    NEW_SALE: "/sale/new"
+    NEW_SALE: "/sale/new",
+    /**
+     * Customers list — Find Customer (docs/order-history-test-cases.md §2.6).
+     * Route suggested by doc §5; confirm against the app router.
+     */
+    CUSTOMERS: "/customers",
+    /**
+     * Customer profile (defaults to the Orders tab = per-customer order history) —
+     * docs/order-history-test-cases.md §2.6. Route suggested by doc §5.
+     */
+    CUSTOMER_DETAIL: (customerId: string): string => `/customer/${customerId}`
   }
 } as const
 

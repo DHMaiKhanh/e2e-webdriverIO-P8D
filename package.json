@@ -26,7 +26,8 @@
     "lint:fix": "eslint \"src/**/*.ts\" \"config/**/*.ts\" --fix",
     "format": "prettier --write \"**/*.{ts,json,md}\"",
     "format:check": "prettier --check \"**/*.{ts,json,md}\"",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "dashboard:run": "powershell -ExecutionPolicy Bypass -File scripts/run-and-dashboard.ps1"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",

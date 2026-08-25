@@ -6,7 +6,7 @@ import { recoverAppConnection } from "./ensure-network.js"
 import { ENV } from "./env.js"
 import { logger } from "./logger.js"
 
-const APP_ID = "com.fastboy.volt_pos"
+const APP_ID = "com.fastboy.volt_pos.debug"
 
 /**
  * "Login once, stay logged in."

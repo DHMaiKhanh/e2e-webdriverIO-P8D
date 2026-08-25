@@ -1,4 +1,4 @@
-export type Status = "passed" | "failed" | "broken" | "skipped"
+export type Status = "passed" | "failed" | "broken" | "skipped" | "notRun"
 
 export interface TestResult {
   id: string | null
@@ -21,6 +21,7 @@ export interface FeatureSummary {
   failed: number
   broken: number
   skipped: number
+  notRun: number
   passRate: number
   durationMs: number
 }
@@ -31,6 +32,7 @@ export interface Summary {
   failed: number
   broken: number
   skipped: number
+  notRun: number
   passRate: number
   durationMs: number
 }

@@ -111,7 +111,9 @@ npm run test:android        # Android (Appium)
 
 ## Android DOM E2E — run on the P8_Dual emulator (not the physical P8D)
 
-The app under test is a **Tauri webview** (`com.fastboy.volt_pos`). Driving its
+The app under test is a **Tauri webview** (`com.fastboy.volt_pos.debug` — debug
+builds carry an `applicationIdSuffix`, so this is a separate package id from the
+release build `com.fastboy.volt_pos`). Driving its
 DOM (login, orders, …) needs Appium's chromedriver to attach to the WebView via
 CDP. That works on the **P8_Dual emulator** but **not** on the physical
 MDM-locked P8D device: there the ROM kills the WebView renderer, so

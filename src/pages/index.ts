@@ -10,6 +10,7 @@
 export { loginPage, LoginPage } from "./login.page.js"
 export { staffTokenLoginPage, StaffTokenLoginPage } from "./staff-token-login.page.js"
 export { customerDisplayPage, CustomerDisplayPage } from "./customer-display.page.js"
+export { customerPage, CustomerPage } from "./customer.page.js"
 export { androidAppShellPage, AndroidAppShellPage } from "./android/app-shell.page.js"
 
 // Order flow (create order → Review order → Charge; discounts; order detail)
@@ -19,6 +20,10 @@ export { reviewOrderPage, ReviewOrderPage } from "./order/review-order.page.js"
 export { promoRewardPage, PromoRewardPage } from "./order/promo-reward.page.js"
 export { itemDiscountPage, ItemDiscountPage } from "./order/item-discount.page.js"
 export { orderDetailPage, OrderDetailPage } from "./order/order-detail.page.js"
+
+// Order History browse surface (list + tabs + date + filter + search; per-customer history)
+export { orderHistoryPage, OrderHistoryPage } from "./order/order-history.page.js"
+export { orderFilterPage, OrderFilterPage } from "./order/order-filter.page.js"
 
 // Payment / checkout (Payment method → tender → finalize + receipt)
 export { paymentMethodPage, PaymentMethodPage } from "./payment/payment-method.page.js"

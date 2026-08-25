@@ -17,7 +17,8 @@ $ErrorActionPreference = 'Stop'
 $Avd     = 'P8_Dual'
 $Serial  = 'emulator-5554'
 $Emulator= 'C:\Android\Sdk\emulator\emulator.exe'
-$Pkg     = 'com.fastboy.volt_pos'
+$Pkg     = 'com.fastboy.volt_pos.debug'  # debug builds get applicationIdSuffix ".debug" (P8D build.gradle.kts) -
+                                          # a different package from the release id com.fastboy.volt_pos
 $UserIni = Join-Path $env:USERPROFILE ".android\avd\$Avd.avd\emulator-user.ini"
 
 # 1) Force a fixed, large window size on every launch (fixes the tiny/black window).

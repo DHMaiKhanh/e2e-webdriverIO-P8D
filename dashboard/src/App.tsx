@@ -4,12 +4,13 @@ import { STATUS_META, fmtDuration, fmtInt, fmtTime } from "./format"
 import { Donut } from "./components/Donut"
 import { FeatureBars } from "./components/FeatureBars"
 
-type StatusFilter = "problems" | "passed" | "skipped" | "all"
+type StatusFilter = "problems" | "passed" | "skipped" | "notRun" | "all"
 
 const STATUS_FILTERS: { key: StatusFilter; label: string }[] = [
   { key: "problems", label: "Có lỗi" },
   { key: "passed", label: "Pass" },
   { key: "skipped", label: "Skip" },
+  { key: "notRun", label: "Chưa chạy" },
   { key: "all", label: "Tất cả" }
 ]
 
@@ -107,12 +108,29 @@ export function App() {
 
   const s = data.summary
   const problems = s.failed + s.broken
+  const executed = s.passed + s.failed + s.broken
   const kpis = [
-    { label: "Tổng test", value: fmtInt(s.total), sub: `${data.features.length} tính năng`, accent: "var(--axis)" },
-    { label: "Passed", value: fmtInt(s.passed), sub: `${s.passRate}% tỉ lệ pass`, accent: "var(--st-pass)" },
+    {
+      label: "Tổng test",
+      value: fmtInt(s.total),
+      sub: `${data.features.length} tính năng · ${fmtInt(executed)} đã chạy`,
+      accent: "var(--axis)"
+    },
+    {
+      label: "Passed",
+      value: fmtInt(s.passed),
+      sub: `${s.passRate}% pass · trên ${fmtInt(executed)} đã chạy`,
+      accent: "var(--st-pass)"
+    },
     { label: "Failed", value: fmtInt(s.failed), sub: "assertion sai", accent: "var(--st-fail)" },
     { label: "Broken", value: fmtInt(s.broken), sub: "lỗi/timeout khi chạy", accent: "var(--st-broken)" },
     { label: "Skipped", value: fmtInt(s.skipped), sub: "bị gate / it.skip", accent: "var(--st-skip)" },
+    {
+      label: "Chưa chạy",
+      value: fmtInt(s.notRun),
+      sub: "có trong code, chưa sinh kết quả",
+      accent: "var(--st-notrun)"
+    },
     { label: "Thời lượng", value: fmtDuration(s.durationMs), sub: `${fmtInt(problems)} test lỗi`, accent: "var(--axis)" }
   ]
   const themeIcon = theme === "system" ? "🖥️ Auto" : theme === "light" ? "☀️ Sáng" : "🌙 Tối"

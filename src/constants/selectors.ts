@@ -8,12 +8,27 @@
  * Selector helpers:
  *   testId("login-submit")   →  '[data-testid="login-submit"]'
  *   dataAttr("state", "open") →  '[data-state="open"]'
- *   byText("button", "Save")  →  'button*=Save'
+ *   byText("button", "Save")  →  innermost <button> whose text contains "Save"
+ *   byText("*", "Saved")      →  innermost element whose text contains "Saved"
  */
 
 export const testId = (id: string): string => `[data-testid="${id}"]`
 export const dataAttr = (attr: string, value: string): string => `[data-${attr}="${value}"]`
-export const byText = (tag: string, text: string): string => `${tag}*=${text}`
+/**
+ * Text selector as **XPath**, matching the *innermost* element of `tag` whose
+ * normalized text CONTAINS `text`.
+ *
+ * NB: do NOT emit the CSS `tag*=text` form. WDIO rejects a `*` tag (`byText("*",…)`
+ * → `**=text`) with "invalid or illegal selector" (status 32) — which crashes a
+ * page's `waitForLoaded`/`safeClick` — and even the valid `button*=…` form does
+ * not reliably match text inside the Tauri webview's nested spans (see
+ * CARD_PAYMENT.HEADER). XPath `contains(normalize-space())` is the form the rest
+ * of this file already trusts (btnText / pressable / slotExact).
+ */
+export const byText = (tag: string, text: string): string => {
+  const el = tag && tag !== "*" ? tag.toLowerCase() : "*"
+  return `//${el}[contains(normalize-space(.),"${text}")][not(.//${el}[contains(normalize-space(.),"${text}")])]`
+}
 
 // --- Real Tauri-webview hooks (Đường A2) ---------------------------------
 // The P8D webview ships NO data-testid, but its DOM is fully queryable and the
@@ -33,6 +48,62 @@ const btnText = (t: string): string => `//button[normalize-space()="${t}"]`
 const pressable = (t: string): string => `//button[@data-slot="pressable"][normalize-space()="${t}"]`
 /** A numpad key (`data-slot="keypad-key"`) by label ("1".."9", "0", "C"). */
 const keypad = (n: string): string => `//button[@data-slot="keypad-key"][normalize-space()="${n}"]`
+/** A header icon button (`data-slot="nav-icon-button"`) by its aria-label. */
+const navIcon = (label: string): string => `[data-slot="nav-icon-button"][aria-label="${label}"]`
+/** A checkbox row (`data-slot="checkbox"`) by its aria-label (staff / payment). */
+const checkboxAria = (label: string): string => `[data-slot="checkbox"][aria-label="${label}"]`
+/** Any element with a given `data-slot` whose exact trimmed text equals `t`. */
+const slotExact = (name: string, t: string): string => `//*[@data-slot="${name}"][normalize-space()="${t}"]`
+/** A `data-slot="pressable"` button by exact visible text. */
+const pressableText = (t: string): string => `//button[@data-slot="pressable"][normalize-space()="${t}"]`
+/** An order-detail breakdown row (`data-slot="summary-item"`) whose label span
+ * equals `label` — e.g. summaryRow("Subtotal") → the "Subtotal$124.00" row. */
+const summaryRow = (label: string): string =>
+  `//*[@data-slot="summary-item"][.//span[normalize-space()="${label}"]]`
+/** Cancel-reason radio labels, keyed by the spec's stable key (OCAN-02). */
+const CANCEL_REASON_LABELS: Record<string, string> = {
+  "customer-request": "Customer request",
+  "service-issue": "Service issue",
+  "incorrect-order": "Incorrect order",
+  "duplicate-payment": "Duplicate payment",
+  "promotion-discount-error": "Promotion / discount error",
+  "staff-mistake": "Staff mistake",
+  other: "Other"
+}
+/** Order-History status-tab display text, keyed by the spec's stable key. */
+const STATUS_TAB_TEXT: Record<string, string> = {
+  all: "All",
+  pending: "Pending",
+  "re-open": "Re-open",
+  "successful-unsettled": "Successful - Unsettled",
+  "successful-settled": "Successful - Settled",
+  canceled: "Canceled"
+}
+/** Filter Sort-by radio form values, keyed by the spec's option key. */
+const SORT_VALUE: Record<string, string> = {
+  "last-updated": "updatedAt",
+  "date-completed": "completedAt"
+}
+/** Filter Payment-method checkbox aria-labels, keyed by the spec's method key. */
+const PAYMENT_LABEL: Record<string, string> = {
+  card: "Card",
+  cash: "Cash",
+  "gift-card": "Gift Card",
+  other: "Other"
+}
+/** Date-picker quick-preset display text, keyed by the spec's preset key. */
+const DATE_PRESET_TEXT: Record<string, string> = {
+  today: "Today",
+  yesterday: "Yesterday",
+  "last-7-days": "Last 7 days",
+  "this-month": "This month"
+}
+/** Customer profile segment-tab display text, keyed by the spec's tab key. */
+const CUSTOMER_TAB_TEXT: Record<string, string> = {
+  orders: "Orders",
+  rewards: "Rewards",
+  history: "History"
+}
 
 export const SELECTORS = {
   // ---------------- Login (EXAMPLE/template — see LOGIN_STAFF_TOKEN for the real flow) ----------------
@@ -225,7 +296,7 @@ export const SELECTORS = {
   CARD_PAYMENT: {
     // XPath on the NavBar title span (present in BOTH idle & blocked states).
     // The webview reliably resolves XPath (cash uses the same //button style);
-    // WDIO's `*=`/`**=` text forms did NOT match this span, so anchor exactly.
+    // an exact-text anchor is clearer here than byText's contains() form.
     HEADER: '//span[normalize-space()="Card payment"]',
     UNAVAILABLE: '//*[normalize-space()="Card payment unavailable"]',
     CHOOSE_ANOTHER: byText("button", "Choose another method"),
@@ -275,26 +346,54 @@ export const SELECTORS = {
     LINE: testId("item-discount-line")
   },
 
-  // ---------------- Order detail actions (§8.10) ----------------
+  // ---------------- Order detail actions (§8.10) + completed-order receipt ----
+  // Reused by docs/order-history-test-cases.md §4.6 (the read-only receipt of a
+  // finished order is the same screen). Money getters keep the `order-detail-*`
+  // prefix already established here.
+  // Real Tauri-webview hooks (route /order/<id>/detail). No data-testid ships; the
+  // receipt is built from `summary-item` rows (label span + value span),
+  // `line-item` service rows, `info-item` technician group, `badge` status pills,
+  // and text-addressed section headers / footer buttons. Money getters parse the
+  // "$X.XX" out of a row's text (see OrderDetailPage.moneyOf).
   ORDER_DETAIL: {
-    PAYMENT_DETAILS: byText("*", "Payment details"),
-    SEND_SHEET: byText("*", "Send receipt"),
-    SHARE: testId("order-share"),
-    CANCEL_ORDER: testId("cancel-order"),
-    REPRINT_RECEIPT: testId("reprint-receipt"),
-    SUBTOTAL: testId("order-detail-subtotal"),
-    TOTAL_PAID: testId("order-detail-total-paid"),
-    PAYMENT_METHOD: testId("order-detail-payment-method"),
-    STATUS_BADGE: testId("order-detail-status"),
-    // key: "customer-request" | "service-issue" | "incorrect-order" | ...
-    CANCEL_DIALOG: byText("*", "Cancel this order?"),
-    CANCEL_REASON: (key: string): string => testId(`cancel-reason-${key}`),
-    CANCEL_CONFIRM: testId("cancel-confirm"),
-    CANCEL_BACK: testId("cancel-back"),
-    // type: "email" | "text"
-    SEND_RECEIPT: (type: string): string => testId(`send-receipt-${type}`),
-    RECEIPT_INPUT: testId("receipt-input"),
-    RECEIPT_SEND: testId("receipt-send")
+    PAYMENT_DETAILS: '//*[contains(text(),"Payment details")]',
+    // Header Share = the "Send receipt" icon button; sheet = its action list.
+    SEND_SHEET: slotExact("sheet-title", "Send receipt"),
+    SHARE: navIcon("Send receipt"),
+    // Footer actions (scope to the bottom bar so the dialog's twin doesn't clash).
+    CANCEL_ORDER: '//*[@data-slot="bottom-bar"]//button[normalize-space()="Cancel order"]',
+    REPRINT_RECEIPT: '//*[@data-slot="bottom-bar"]//button[normalize-space()="Reprint receipt"]',
+    // Breakdown rows — matched by their label span, value parsed from the row text.
+    SUBTOTAL: summaryRow("Subtotal"),
+    TOTAL_PAID: summaryRow("Total paid"),
+    TIP: summaryRow("Tip"),
+    CASHIER: summaryRow("Cashier"),
+    CUSTOMER: summaryRow("Customer"),
+    PAYMENT_METHOD: '//*[contains(text(),"Payment details")]', // block header; method text read from body
+    // First badge = order status; last badge = payment status ("Successful").
+    STATUS_BADGE: '(//*[@data-slot="badge"])[1]',
+    PAYMENT_STATUS: '(//*[@data-slot="badge"])[last()]',
+    // Cancel dialog — key: "customer-request" | "service-issue" | ...
+    CANCEL_DIALOG: slotExact("dialog-title", "Cancel this order?"),
+    CANCEL_REASON: (key: string): string => `//label[normalize-space()="${CANCEL_REASON_LABELS[key] ?? key}"]`,
+    CANCEL_CONFIRM: '//*[@data-slot="dialog-footer"]//button[normalize-space()="Cancel order"]',
+    CANCEL_BACK: '//*[@data-slot="dialog-footer"]//button[normalize-space()="Back"]',
+    // Send-receipt action sheet — type: "email" | "text"
+    SEND_RECEIPT: (type: string): string =>
+      `//*[@data-slot="action-sheet-item"][contains(normalize-space(),"${type === "email" ? "Email" : "Text"}")]`,
+    RECEIPT_INPUT: '[data-slot="action-sheet-item"] input, input[type="email"], input[type="tel"]',
+    RECEIPT_SEND: '//button[normalize-space()="Send"]',
+
+    // --- Completed-order receipt fields (order-history §2.5 / §4.6) ---
+    ORDER_ID: slot("nav-bar"), // header "#OD…" order number
+    ORDER_INFORMATION: '//*[contains(text(),"Order information")]',
+    TECH_GROUP: slot("info-item"), // technician grouping block
+    // Service line rows — each is "<service name>$<price>" (price parsed in page object)
+    SERVICE_LINE_ANY: slot("line-item"),
+    SERVICE_LINE_PRICE: slot("line-item"),
+    // Card-tender only: brand ··last4 + transaction id (cash/gift have neither)
+    CARD_BRAND: '//span[contains(text(),"··") or contains(text(),"••")]',
+    TRANSACTION_ID: summaryRow("Transaction")
   },
 
   // ---------------- Orders list status tabs (§8.11) ----------------
@@ -303,6 +402,97 @@ export const SELECTORS = {
     STATUS_TAB: (key: string): string => testId(`orders-status-${key}`),
     ORDER_CARD: (id: string): string => testId(`order-card-${id}`),
     EMPTY: byText("*", "No orders match these filters")
+  },
+
+  /**
+   * Order History — the browse surface: Orders list + status tabs + date nav +
+   * search (docs/order-history-test-cases.md §2.1–2.3, §4.1/4.2/4.3/4.5).
+   *
+   * ⚠️ testid-first per doc §5 — these hooks do NOT exist in the WebView yet;
+   * the app team must ship them. The doc's "tạm" text/aria fallbacks are only
+   * for exploratory scans, not encoded here (one durable selector per key).
+   * Text inputs use the observed placeholder (the repo already trusts
+   * placeholder hooks for inputs — see LOGIN_STAFF_TOKEN / GIFT_CARD).
+   */
+  ORDER_HISTORY: {
+    HEADER: slot("nav-bar"),
+    SEARCH_BTN: navIcon("Search orders"),
+    // The search toggle flips its aria-label to "Close search" while open.
+    SEARCH_CLOSE: navIcon("Close search"),
+    SEARCH_INPUT: 'input[placeholder="Search order # or customer"]',
+    FILTER_BTN: navIcon("Filter orders"),
+    // Date nav — the label sits between the Previous/Next day icon buttons; address
+    // it positionally so it works for any day text ("Today · Aug 12" / "Aug 11").
+    DATE_PREV: '[data-slot="pressable"][aria-label="Previous day"]',
+    DATE_NEXT: '[data-slot="pressable"][aria-label="Next day"]',
+    DATE_LABEL: '//button[@aria-label="Previous day"]/following-sibling::button[@data-slot="pressable"][1]',
+    // Status tabs are header pressables keyed by display text (STATUS_TAB_TEXT).
+    // key: "all" | "pending" | "re-open" | "successful-unsettled" | "successful-settled"
+    STATUS_TAB: (key: string): string => pressableText(STATUS_TAB_TEXT[key] ?? key),
+    // Order cards — content-area pressables. No id ships; a card is addressed by its
+    // visible #OD code (see OrderHistoryPage). Status is a `badge` span inside.
+    CARD_ANY: '[data-slot="screen-scaffold-content"] button[data-slot="pressable"]',
+    CARD_BADGE: slot("badge"),
+    // Empty state is detected by cardCount()===0 (copy varies), not a fixed string.
+    EMPTY: byText("*", "No orders")
+  },
+
+  /**
+   * Filter sheet — Sort by / Staff / Payment method (order-history §2.2, §4.4).
+   * Real hooks: sort = radio-group-items keyed by their form value (updatedAt /
+   * completedAt); staff + payment = `checkbox` rows keyed by aria-label.
+   */
+  ORDER_FILTER: {
+    SHEET: slotExact("sheet-title", "Filter"),
+    // option: "date-completed" | "last-updated"
+    SORT: (option: string): string => `button[role="radio"][value="${SORT_VALUE[option] ?? option}"]`,
+    STAFF_SEARCH: 'input[placeholder="Search staff"]',
+    STAFF_OPTION: (name: string): string => checkboxAria(name),
+    // Staff options = every checkbox EXCEPT the four payment-method checkboxes.
+    STAFF_OPTION_ANY:
+      '[data-slot="checkbox"]:not([aria-label="Card"]):not([aria-label="Cash"]):not([aria-label="Gift Card"]):not([aria-label="Other"])',
+    // method: "card" | "cash" | "gift-card" | "other"
+    PAYMENT: (method: string): string => checkboxAria(PAYMENT_LABEL[method] ?? method),
+    APPLY: '//button[normalize-space()="Apply"]',
+    CLEAR_ALL: pressableText("Clear all")
+  },
+
+  /**
+   * Date picker sheet (`/orders?sheet=date`) — quick presets + a react-day-picker
+   * month calendar. Day cells live in `td[data-day="YYYY-MM-DD"]`; future days are
+   * disabled. Presets and the footer are addressed by text.
+   */
+  DATE_PICKER: {
+    SHEET: slotExact("sheet-title", "Select date"),
+    // preset: "today" | "yesterday" | "last-7-days" | "this-month"
+    PRESET: (preset: string): string => pressableText(DATE_PRESET_TEXT[preset] ?? preset),
+    // iso: "2026-08-10" — the gridcell carries the ISO day; click the button inside.
+    DAY: (iso: string): string => `td[data-day="${iso}"] button`,
+    // The currently-selected day (its aria-label ends ", selected").
+    SELECTED_DAY: '//td//button[contains(@aria-label,", selected")]',
+    VIEW_ORDERS: '//button[normalize-space()="View orders"]'
+  },
+
+  /**
+   * Customer — Find Customer list + the profile whose Orders tab is the
+   * per-customer order history (order-history §2.6, §4.7). No ids ship: customer
+   * rows and order rows are addressed positionally; stats are read from text.
+   */
+  CUSTOMER: {
+    SEARCH_INPUT: '[data-slot="search-bar-input"]',
+    ROW_ANY: '[data-slot="screen-scaffold-content"] [data-slot="pressable"]',
+    // Profile header — masked phone is the pressable "•••-•••-XXXX".
+    PHONE: '//*[@data-slot="pressable"][contains(., "•")]',
+    EDIT_BTN: navIcon("Edit customer"),
+    // The profile is "loaded" once its segment tab bar exists.
+    STAT_ROOT: slot("segment-tabs"),
+    // tab: "orders" | "rewards" | "history"
+    PROFILE_TAB: (tab: string): string => slotExact("segment-tabs-trigger", CUSTOMER_TAB_TEXT[tab] ?? tab),
+    PROFILE_TAB_ANY: slot("segment-tabs-trigger"),
+    // Orders tab — per-customer order rows (content pressables carrying an #OD code).
+    ORDER_ROW_ANY: '[data-slot="screen-scaffold-content"] [data-slot="pressable"]',
+    ORDER_EMPTY: '//*[contains(text(),"No orders yet")]',
+    HISTORY_EMPTY: '//*[contains(text(),"No appointment history")]'
   },
 
   // ---------------- Common ----------------

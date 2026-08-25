@@ -29,7 +29,7 @@ import { recoverAppConnection } from "../../utils/ensure-network.js"
 import { ENV } from "../../utils/env.js"
 import { logger } from "../../utils/logger.js"
 
-const APP_ID = "com.fastboy.volt_pos"
+const APP_ID = "com.fastboy.volt_pos.debug"
 const TOKEN = ENV.testUser.staffToken
 
 const suite = process.env.ANDROID_SWITCH_SHOP === "1" ? describe : describe.skip

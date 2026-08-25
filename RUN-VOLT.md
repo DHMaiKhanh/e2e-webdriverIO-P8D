@@ -6,8 +6,9 @@
 |---|---|---|
 | **Chạy bản MỚI NHẤT của app** (giữ session) | `powershell -ExecutionPolicy Bypass -File .\update-volt.ps1` | ✅ build rồi cài đè |
 | **Mở nhanh** bản đang cài (khỏi build) | `powershell -ExecutionPolicy Bypass -File .\run-volt.ps1` | ❌ chỉ mở |
+| **Sửa màn "Please contact support for assistance."** | `powershell -ExecutionPolicy Bypass -File .\scripts\fix-login.ps1` | ❌ chỉ mở lại |
 
-> Cả hai đều vào **thẳng Home tiệm 14, không cần login** (session đã lưu). Khác nhau: `update-volt.ps1` build code mới nhất trước khi mở (mất vài phút), `run-volt.ps1` mở luôn bản đang có.
+> Cả hai lệnh đầu đều vào **thẳng Home tiệm 14, không cần login** (session đã lưu). Khác nhau: `update-volt.ps1` build code mới nhất trước khi mở (mất vài phút), `run-volt.ps1` mở luôn bản đang có. Lệnh thứ ba dùng khi session đã hết hạn (xem mục riêng bên dưới).
 
 ---
 
@@ -65,8 +66,26 @@ powershell -ExecutionPolicy Bypass -File .\run-volt.ps1 -Scale 0.5   # 0.30 nh�
 1. **Ghim cỡ cửa sổ lớn cố định** — sửa `window.scale` trong `%USERPROFILE%\.android\avd\P8_Dual.avd\emulator-user.ini` (mặc định `-1` = auto → emulator chọn cửa sổ nhỏ).
 2. **Boot emulator kèm DNS** — chạy `emulator -avd P8_Dual -dns-server 8.8.8.8,8.8.4.4 -no-snapshot-load` (nếu emulator chưa chạy). AVD này hay boot với DNS chết nếu không truyền `-dns-server`.
 3. **Chờ** `sys.boot_completed=1` + ~15s cho WiFi/DNS lên.
-4. **Mở app** `com.fastboy.volt_pos`.
+4. **Mở app** `com.fastboy.volt_pos.debug`.
 5. **Dời cửa sổ về (40,40)** bằng Win32 `MoveWindow` — vì emulator hay mở cửa sổ lòi lên trên mép màn hình.
+
+---
+
+## Sửa màn "Please contact support for assistance." — `scripts/fix-login.ps1`
+
+Màn này hiện khi **refresh token hết hạn** (không phải backend down, không phải lỗi mạng): app gọi `/refresh_token` bị 401 → tự xóa session → hết 2 phút retry thì hiện "contact support" thay vì quay lại QR login. Force-stop + mở lại app là đủ để thoát màn này — **không cần build lại**.
+
+```powershell
+# về thẳng màn "Enter Staff Token", bạn tự gõ token mới (lấy từ Portal) + bấm Sign in
+powershell -ExecutionPolicy Bypass -File .\scripts\fix-login.ps1
+
+# hoặc tự động gõ token + bấm Sign in luôn (token single-use, lấy từ Portal trước khi chạy)
+powershell -ExecutionPolicy Bypass -File .\scripts\fix-login.ps1 -Token "<token-moi>"
+```
+
+Script làm: force-stop app (giữ nguyên `device_id`) → mở lại → chụp màn QR → tap ẩn 5 lần (icon ~540,660) trong 1 lệnh adb → sang màn Staff Token → chụp lại để kiểm tra (lưu ở `reports\screenshots\fix-login-*.png`). Nếu truyền `-Token`, script gõ token vào ô, chụp xác nhận, rồi bấm Sign in.
+
+> Sau khi Sign in vẫn có thể gặp 403 "Waiting for device approval from portal…" — đây là bước duyệt thủ công của admin trên GCI Business portal, script không tự làm được.
 
 ---
 
@@ -81,7 +100,7 @@ Session (access/refresh token + merchant_id + khóa mã hóa DB) được app l�
 **Chỉ cần token MỚI khi mất session**, tức là khi:
 - Bấm **Log out** trong app, hoặc
 - Chạy **`p8 build`** (uninstall + cài lại → xóa sạch data), hoặc
-- Chạy **`p8 clear`** / `adb shell pm clear com.fastboy.volt_pos` (reset device_id/login/DB), hoặc
+- Chạy **`p8 clear`** / `adb shell pm clear com.fastboy.volt_pos.debug` (reset device_id/login/DB), hoặc
 - Token hết hạn / bị thu hồi phía server.
 
 ---
@@ -91,9 +110,9 @@ Session (access/refresh token + merchant_id + khóa mã hóa DB) được app l�
 Nút "Log out" trong app là **DEV-only** nên bản `p8 build` không hiện. Cách logout bằng adb mà **không làm mất device approval** (chỉ xóa session, giữ device_id):
 
 ```powershell
-adb -s emulator-5554 shell run-as com.fastboy.volt_pos rm credentials
-adb -s emulator-5554 shell am force-stop com.fastboy.volt_pos
-adb -s emulator-5554 shell monkey -p com.fastboy.volt_pos -c android.intent.category.LAUNCHER 1
+adb -s emulator-5554 shell run-as com.fastboy.volt_pos.debug rm credentials
+adb -s emulator-5554 shell am force-stop com.fastboy.volt_pos.debug
+adb -s emulator-5554 shell monkey -p com.fastboy.volt_pos.debug -c android.intent.category.LAUNCHER 1
 ```
 
 Rồi trên màn **QR login** ("Welcome back"):
@@ -110,6 +129,7 @@ Rồi trên màn **QR login** ("Welcome back"):
 | Triệu chứng | Nguyên nhân | Cách xử lý |
 |---|---|---|
 | App kẹt ở **QR login** khi mở | Session đã mất | Login lại bằng token mới (mục trên) |
+| Màn **"Please contact support for assistance."** | Refresh token hết hạn (401 trên `/refresh_token`) | `.\scripts\fix-login.ps1` (xem mục riêng ở trên) |
 | **"error sending request"** khi sync | DNS emulator chết | Script đã truyền `-dns-server`; nếu vẫn lỗi, kill emulator rồi chạy lại script |
 | **"Couldn't load / check your connection"** | Backend `:8080` down (chỉ ảnh hưởng luồng desktop) | Xem `memory` P8D backend :8080 |
 | Sync đứng ở **403 "Waiting for device approval"** | device_id mới, chưa duyệt portal | Cần admin duyệt thiết bị trên GCI Business portal (thao tác thủ công phía backend) |
@@ -119,7 +139,7 @@ Rồi trên màn **QR login** ("Welcome back"):
 
 ## Thông tin liên quan
 
-- Package: `com.fastboy.volt_pos`
+- Package: `com.fastboy.volt_pos.debug` (debug builds get `applicationIdSuffix ".debug"`; the release id `com.fastboy.volt_pos` is a separate, no-longer-used app on this device)
 - AVD: `P8_Dual` — serial `emulator-5554`
 - Emulator: `C:\Android\Sdk\emulator\emulator.exe`
 - Repo app: `D:\Project\P8D\P8D` · Repo test: `d:\Project\P8D\WebdriverIO_P8D`

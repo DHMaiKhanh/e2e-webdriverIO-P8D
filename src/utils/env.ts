@@ -51,7 +51,7 @@ export const ENV = {
 
   // ---- Android (real device via adb/Appium) ----
   android: {
-    appPackage: process.env.ANDROID_APP_PACKAGE ?? "com.fastboy.volt_pos",
+    appPackage: process.env.ANDROID_APP_PACKAGE ?? "com.fastboy.volt_pos.debug",
     appActivity: process.env.ANDROID_APP_ACTIVITY ?? ".MainActivity",
     appPath: process.env.ANDROID_APP_PATH ?? "",
     deviceName: process.env.ANDROID_DEVICE_NAME ?? "",

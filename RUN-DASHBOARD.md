@@ -94,10 +94,25 @@ Get-NetTCPConnection -LocalPort 4723 -EA SilentlyContinue   # không ra gì = c�
 > bind Appium lên 4723). Tắt `appium-mcp` trong lúc chạy bộ WDIO để hai bên không
 > tranh cổng.
 
-### Gộp thành 1 lệnh có kèm dọn cổng (Android)
+**Kiểm tra backend :8080 (bắt buộc)** — nếu backend chưa chạy, app trên emulator
+đứng ở màn "Couldn't load…" cho MỌI màn hình cần data thật (order history,
+customer, payment), và Appium/uiautomator2 phải retry liên tục để chờ hồi phục —
+đây cũng là điều kiện dễ khiến Appium server crash giữa chừng (native exit code
+dạng `32212265xx`), làm **các spec sau điểm crash không hề được chạy** dù dashboard
+không báo fail/skip gì cả (xem mục 6).
 
 ```powershell
-Get-NetTCPConnection -LocalPort 4723 -State Listen -EA SilentlyContinue | Select-Object -ExpandProperty OwningProcess -Unique | ForEach-Object { Stop-Process -Id $_ -Force -EA SilentlyContinue }; Get-CimInstance Win32_Process -Filter "Name='node.exe'" | Where-Object { $_.CommandLine -match 'appium' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force -EA SilentlyContinue }; Remove-Item -Recurse -Force reports\allure-results -EA SilentlyContinue; npm run test:android:emu; cd dashboard; npm run dev
+try { Invoke-WebRequest -Uri http://localhost:8080 -UseBasicParsing -TimeoutSec 3 | Out-Null; Write-Host "Backend :8080 OK" -ForegroundColor Green } catch { Write-Host "Backend :8080 DOWN — start no P8D repo: npm run start (tauri dev --features graphql_server)" -ForegroundColor Red }
+```
+
+### Gộp thành 1 lệnh có kèm dọn cổng (Android)
+
+> ⚠️ Lệnh này PHẢI chạy khi đang đứng ở thư mục gốc `WebdriverIO_P8D` (không phải
+> trong `dashboard/`) — lệnh tự `cd` vào `WebdriverIO_P8D` trước để an toàn dù bạn
+> đang ở đâu.
+
+```powershell
+cd D:\Project\P8D\WebdriverIO_P8D; Get-NetTCPConnection -LocalPort 4723 -State Listen -EA SilentlyContinue | Select-Object -ExpandProperty OwningProcess -Unique | ForEach-Object { Stop-Process -Id $_ -Force -EA SilentlyContinue }; Get-CimInstance Win32_Process -Filter "Name='node.exe'" | Where-Object { $_.CommandLine -match 'appium' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force -EA SilentlyContinue }; try { Invoke-WebRequest -Uri http://localhost:8080 -UseBasicParsing -TimeoutSec 3 | Out-Null } catch { Write-Host "⚠ Backend :8080 DOWN — start no P8D repo truoc khi chay test!" -ForegroundColor Red }; Remove-Item -Recurse -Force reports\allure-results -EA SilentlyContinue; npm run test:android:emu; if ($LASTEXITCODE -ne 0) { Write-Host "⚠ Test run KHONG chay het (exit $LASTEXITCODE) — dashboard sap mo se chi hien PHAN da chay, khong phai toan bo test case" -ForegroundColor Red }; cd dashboard; npm run dev
 ```
 
 ---
@@ -141,3 +156,4 @@ cd dashboard; npm run data
 | Số liệu cũ | Bấm **↻ Làm mới**, hoặc chạy lại `npm run data` |
 | Test Android **toàn fail** `EADDRINUSE` / `ECONNREFUSED` `127.0.0.1:4723` | Appium zombie giữ cổng 4723 — chạy đoạn dọn cổng ở [mục 3b](#3b-chuẩn-bị-trước-khi-chạy-test-android-bắt-buộc) trước khi run lại |
 | `npm error Missing script: "test"` | Đang đứng trong `dashboard/` — `cd` về thư mục gốc repo rồi chạy `npm run …` |
+| Dashboard hiện **ít hơn hẳn** tổng số test case trong repo, nhưng **100% pass, 0 fail/skip** | Test run KHÔNG chạy hết — thường do Appium server crash giữa chừng (log `[appium] exited with code 322122xxxx` trong `logs/test-run.log`) hoặc backend `:8080` down (log `BACKEND DOWN` trong `logs/errors.log`) làm session WebDriver chết. Vì lệnh gộp nối bằng `;`, các spec chưa kịp chạy KHÔNG hiện lên là fail/skip — chúng chỉ đơn giản chưa từng được gọi. Kiểm tra 2 log trên; đảm bảo backend :8080 chạy trước (mục 3b); chạy lại toàn bộ. |

@@ -24,7 +24,7 @@ import { ROUTES } from "../../constants/routes.js"
 import { SELECTORS } from "../../constants/selectors.js"
 import { TIMEOUTS } from "../../constants/timeouts.js"
 
-const APP_ID = "com.fastboy.volt_pos"
+const APP_ID = "com.fastboy.volt_pos.debug"
 
 // ⛔ LOGIN TEST CASES DISABLED — every run goes STRAIGHT into the app on the
 //    already-authenticated session (appium:noReset keeps it alive; see
